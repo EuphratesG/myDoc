@@ -1,0 +1,797 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+      
+      
+        <link rel="next" href="../%E7%9F%A9%E9%98%B5%E8%AE%BA/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>机器学习 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              机器学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSAPP/" class="md-nav__link">
+        CSAPP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearing/" class="md-nav__link">
+        强化学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SICP/" class="md-nav__link">
+        SICP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithm/" class="md-nav__link">
+        algorithm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../browser/" class="md-nav__link">
+        谈谈浏览器
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diary/" class="md-nav__link">
+        diary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javaWeb/" class="md-nav__link">
+        谷粒商城
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maajyann/" class="md-nav__link">
+        maahyann
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_grammar/" class="md-nav__link">
+        这是第一级标题
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/" class="md-nav__link">
+        mess
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        network
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgraduate/" class="md-nav__link">
+        postgraduate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        Simpread 面向对象和函数式编程的本质区别
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        人工智能考试
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        动手学深度学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          机器学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        机器学习
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    第二章 离散数据的生成模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    第三章 高斯分布
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第四章 核方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第六章 贝叶斯网络
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        矩阵论
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        联邦KGs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          Papers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          Papers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FedGraph/" class="md-nav__link">
+        FedGraph: Federated Graph Learning With Intelligent Sampling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FederatedScope-GNN/" class="md-nav__link">
+        FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        联邦学习和联邦图学习相关
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    第二章 离散数据的生成模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    第三章 高斯分布
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第四章 核方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第六章 贝叶斯网络
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>机器学习</h1>
+
+<p>回归模型就是y（预测）=f（x，θ）（标签，模型上的点）+欧米伽 因此y也服从正态分布，均值为f方差为待定<br />
+自监督学习是无监督学习中的一种类型，通过构造pretext辅助任务去挖掘监督信息，如<strong>词的遮罩、时序数据的相似性、正负样本的区别</strong> <br />
+突然理解了masked的自监督的意义，比如图片你遮罩了一部分，然后拿遮罩的这一部分作为标签去参与构建损失函数训练模型  </p>
+<p>参数化模型和非参数化模型，对于形如p（y|x）或者p（x）的概率模型，模型的解析表达式和参数已经确定（其实就是概率密度函数）例如高斯分布。优点是使用较快，缺点是对于数据分布的性质做了过多的假设<br />
+对于形如p（y|x）或者p（x）的概率模型，表达式未定，knn（注意knn是有监督学习，因为要通过k个最近邻居的类别判断自己类别，核心是距离和k的超参数选取，kmeans是另一个无监督算法）  </p>
+<p>维度灾难，数据维度太高统一维度下相关特征太少，甚至可能导致过拟合。解决方法降维、正则化、增加数据  </p>
+<p>我们如何选择模型，一个评判标准是泛化误差，即模型对未来数据的错分率，但我们又得不到未来数据，因此用大规模测试集代替，但训练时又无法访问测试集，因此引入交叉验证。<br />
+如果数据足够，就训练几个不同超参数的模型就先在验证集上选出最优，最后训练完毕再在测试集上跑。数据不足够的话就把全部数据分成k个子集训练k次，每次用k-1个子集训练1个子集验证，平均结果去评价本参数的模型的表现。  </p>
+<h2 id="_1">第二章 离散数据的生成模型</h2>
+<p>似然函数理解成在某个h（发生事件的先验参数）下发生已观测到事件的概率（令其最大）<br />
+注意区分h的后验概率和对y做预测的后验概率（贝叶斯预测模型）
+注意下雨、女孩去不去图书馆是朴素贝叶斯分类器一种模型，糖果是另一组贝叶斯预测模型（要用到那个公式）仔细体会一下  </p>
+<p>生成模型（建模不同类的分布）建模的是联合分布p(x,y)，而判别模型建模（建模不同类的边界）的则是条件分布p(y|x)<br />
+凭什么得到似然函数就要最大化似然函数？而我们会倾向于认为，现实发生的事件应该就对应于理论上概率最大的那一个事件。<br />
+所谓的分类分布不过就是伯努利分布的骰子场景扩充  <br />
+共轭先验，和似然函数、后验具有相同的形式并可以合并。二项分布的共轭先验就是β分布，知道公式就行   </p>
+<p>生成式模型：
+p( y = c | x,θ) 正比于 p(x | y = c,θ) p( y = c |θ)  <br />
+c类别的概率正比于c在样本中的类条件密度（样本中是c类的概率）乘c的先验概率（c类占所有类的比例） 右边其实就是x和y=c的联合概率分布，对此建模  </p>
+<p>数字游戏的似然函数和先验h的size和观测数据的个数都有关系，跟骰子还不一样<br />
+先验如果是均匀分布的话那p（h）就是常数，上下的就能约掉，就是骰子例子的上下1/2.<br />
+注意后验预测分布和后验分布是完全不同的两个概念。贝叶斯预测分布是后验预测分布。<br />
+<strong>所以重点是贝叶斯预测分布那个全概率公式推出来的预测公式，但是大多数情况下已知所有的h是不现实的，因此我们常用最大后验分布或者更简单最大似然分布</strong><br />
+至于你说为什么人工智能女孩去图书馆那个没加权？也可以不加权吗
+p17那个x∈c其实是x=1要具象化才对，中间那个是每个类每个先验假设的加权平均（后验的加权，加权权重是自己编的，ppt里是拿出酸橙味的概率，这样最后预测的就是各个模型平均预测酸橙的概率，但是由于如果一直出酸橙的话全是酸橙那个假设的后验会提高，因此该平均概率也会趋向于全是酸橙。cnmppt错了里面应该是x=1外面也是x=1），下面就是贝叶斯公式的上面  </p>
+<p>扔硬币的似然和二项分布就差一个系数，而如果先验和似然的形式相同那么只需要系数相加就能得到后验正比的值了。因此引入二项分布的共轭先验是β分布<br />
+p30其实就是用到前面的贝叶斯预测分布<br />
+p35I指第j面朝上的次数<br />
+狄利克雷那块不是重点，知道结论就行。  </p>
+<p>词袋模型 狄利克雷的应用<br />
+后面的暂时略  </p>
+<h2 id="_2">第三章 高斯分布</h2>
+<p>前面介绍了一下多元高斯分布，引出高斯判别分析  <br />
+生成式分类器是对x和θ条件下的y=c用贝叶斯公式<br />
+高斯判别分析实际上就是生成式模型后面的类条件密度服从高斯分布。<br />
+最近中心分类器实际上就是在高斯判别分析基础上再让类先验服从均匀分布。<br />
+二次判别分析 其实就是把二分类中两个类的后验概率的差单独拿出来做一个判别函数，因为该函数是二次的所以叫二次判别分析<br />
+若两个类的协方差矩阵相等则退化为线性判别分析  </p>
+<p>运用高斯联合分布进行推理
+例子 无噪声数据的函数拟合 没说完啊<br />
+线性高斯系统就y是x的线性函数<br />
+线性高斯系统推断未知标量和推断未知向量都是已知y去用贝叶斯得到x的后验  </p>
+<h2 id="_3">第四章 核方法</h2>
+<p>两个类线性不可分，那么就搞个映射升维让他线性可分。<br />
+由于映射函数一般来说，非常难以寻找，<br />
+❖因此，希望寻找另外一种函数，也能解决分类问题<br />
+❖满足下列条件的函数，称为核函数<br />
+▪ k(x, x) = φ(x)Tφ(x). 自己做是求模（映射函数自己点乘自己应该是模吧）<br />
+▪ 具有对称性：k(x, x’) = k(x’, x).  对称 
+▪ 函数值非负：k(x, x’) ≥ 0 正定 
+核函数其实就是两个高维函数的点积<br />
+全部跳过直接到p22构造核函数举例  </p>
+<p>由最小化d得到一个最终损失函数用来优化<br />
+核函数就是高维空间的内积等于原空间核函数的结果，soudesu。  </p>
+<h2 id="_4">第六章 贝叶斯网络</h2>
+<p>概率推理，因为有向图已经给出了联合概率分布的形式，推理就按图推理就行了。  </p>
+<p>"Discriminative representations" （判别式表示，更注重特征提取和分类）和"生成式表示"（generative representations）更注重生成结果的过程。极大似然估计法贯穿了生成式模型的始终。所谓极大似然估计：假如有一坨已知分布但不知道参数（例如方差和均值）的样本数据，我们可以把每个样本带入f后乘起来作为似然函数再求极值得到参数估计值。  </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

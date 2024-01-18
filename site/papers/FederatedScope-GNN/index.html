@@ -1,0 +1,836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../FedGraph/">
+      
+      
+        <link rel="next" href="../%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#federatedscope-gnn-towards-a-unified-comprehensive-and-efficient-package-for-federated-graph-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/" class="md-nav__link">
+        CSAPP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReinforcementLearing/" class="md-nav__link">
+        强化学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SICP/" class="md-nav__link">
+        SICP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/" class="md-nav__link">
+        algorithm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../browser/" class="md-nav__link">
+        谈谈浏览器
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diary/" class="md-nav__link">
+        diary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javaWeb/" class="md-nav__link">
+        谷粒商城
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maajyann/" class="md-nav__link">
+        maahyann
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../md_grammar/" class="md-nav__link">
+        这是第一级标题
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/" class="md-nav__link">
+        mess
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/" class="md-nav__link">
+        network
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../postgraduate/" class="md-nav__link">
+        postgraduate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        Simpread 面向对象和函数式编程的本质区别
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        人工智能考试
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        动手学深度学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        机器学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        矩阵论
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        联邦KGs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          Papers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          Papers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FedGraph/" class="md-nav__link">
+        FedGraph: Federated Graph Learning With Intelligent Sampling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    intro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-work" class="md-nav__link">
+    related work
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    infrastructure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphdatazoo" class="md-nav__link">
+    graphDataZoo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnnmodelzoo-and-model-tuning-component" class="md-nav__link">
+    GNNMODELZOO AND MODEL-TUNING COMPONENT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    experiments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        联邦学习和联邦图学习相关
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    intro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-work" class="md-nav__link">
+    related work
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    infrastructure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphdatazoo" class="md-nav__link">
+    graphDataZoo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnnmodelzoo-and-model-tuning-component" class="md-nav__link">
+    GNNMODELZOO AND MODEL-TUNING COMPONENT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    experiments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="federatedscope-gnn-towards-a-unified-comprehensive-and-efficient-package-for-federated-graph-learning">FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning</h1>
+<h2 id="intro">intro</h2>
+<p>This fantastic progress benefits from the FL frameworks, e.g., TFF [5] and FATE [40], which save practitioners from
+the implementation details and facilitate the transfer from research
+prototype to deployed service.<br />
+prior有联邦的框架，但没有FGL的package<br />
+联邦目前大部分用于cv和nlp，上述框架也不适用于graph。<br />
+FGL目前缺乏dedicated framework，导致很多FGL works（ FedSage+, FedGNN, and
+GCFL+）只能from scratch（自己搭建网络）且没有testbeds（数据集和和配套工具）  </p>
+<p>challenges： 
+1. 传统FL只交换同构数据（模型参数）。异构数据交换（用户之间不只传输模型参数，还要传输节点embedding、加密的邻接矩阵、梯度等等），要处理这些异质化数据就会需要很多不同subroutine，图学习后端还可能不一样（例如一个pytorch一个TensorFlow）。传统FL通常是维护一个静态的计算图再把计算图分给各个用户，但这把压力给到了程序员而不是框架。<br />
+因此需要Unified View for Modularized and Flexible Programming  所谓统一视图即统一后端、统一用message处理异构数据和subroutine。
+本文通过在event-driven的框架FederatedScope（把交换的信息统一成message解决本地数据异构，再给每个用户定制handler解决用户行为异构）上构建FS-G
+<strong>数据的异质化（heterogeneity）是federatedScope尤其关注的，后面的challenge都是FS-G去额外关注的。</strong>
+1. Unified and Comprehensive Benchmarks 防止目前由于隐私问题导致FGL数据集缺少每个用户都用自己各自的数据集，以及每个用户的GNN实现都没有统一的问题
+2. FL用到GNN很少，因此从业者缺乏超参数先验。有效且自动的模型调优Efficient and Automated Model Tuning
+3. Privacy Attacks and Defence. 传统FL也没有用隐私攻击测试FL是否有隐私泄露风险的先例，FGL传异质化数据更需要保证隐私。</p>
+<h2 id="related-work">related work</h2>
+<ol>
+<li>FL<br />
+   这里说了作为分布式学习的特例，FL的核心研究方向是优化方法(不尽然，应该是传输数据的隐私保护和优化方法)。fedAvg等论文多用于cv和nlp领域，有survey为证  </li>
+<li>FGL<br />
+   之前综述里说的FL with structured data中的问题的解决方法基本都要在用户之间传递异构数据（不只模型参数）</li>
+<li>FL software（framework）
+   所谓拆分的computational graph是传统FL框架用来表征各个用户关系和数据流向的，和图结构数据没有关系。用户通常必须用声明式编程（即描述计算图）来实现他们的FL算法，这为开发人员提高了标准。传统FL如此，FGL更不用说了。有一个例外是FedML框架，对应package叫FedGraphNN（不是之前看的FedGraph），但是他也没有考虑上述的3、4问题。</li>
+</ol>
+<h2 id="infrastructure">infrastructure</h2>
+<p>FS-G based on a event-driven FL framework named <strong>FederatedScope</strong>, which abstracts the data exchange in an FL procedure as <strong>message passing</strong>
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202311031049639.png" />
+得益于<strong>FederatedScope</strong>，我们可以把一整个FGL procedure的异构数据-&gt;messages subroutine-&gt;handlers。这样可以不用再static的computational graph中去协调participants。可以十分方便地在FS-G框架下实践任何FGL方法，只需要好好定义message和handler就够了。    </p>
+<h2 id="graphdatazoo">graphDataZoo</h2>
+<p>Dataset, Splitter, Transform（将每一个图映射成新图例如将节点的度作为新的节点特征）, and Dataloader（遍历图或者从图中采样子图的集合）我们重点说前两者。<br />
+splitter：通过现有standalone datasets去模拟FGL去中心化的数据集，做的就是把已有的完备大数据集分给各个client。node/link level每个client拥有子图，graph level每个client拥有所有图集合的子集。细节在附录A<br />
+datasets：FS-G三个数据集</p>
+<h2 id="gnnmodelzoo-and-model-tuning-component">GNNMODELZOO AND MODEL-TUNING COMPONENT</h2>
+<p>GNNModelZoo类似pytorch作为框架的部分，提供了图神经网络的搭建功能（encoder、GNN、decoder、readout）。尤其nn框架中还包含GNNs that decouples feature transformation and propagation（将特征提取和信息传播分开，解开对网络深度和性能的限制例如 GPR-GNN）等诸多现成的GNN网络。ModelZoo和nn是一体的。  <br />
+MODEL-TUNING COMPONENT：<br />
+why？因为调参本身就是重复试错的过程，而FGL的client之间存在大量信息的exchange，因此一个训练的course会开销更大，更经不起反复的调参。<br />
+multi-fidelity HPO 多精度超参数优化，通常存在多个不同成本和精度的评估方法或评估器。
+FS-G allows users to reduce the fidelity（降低成本） by：
+1. 每次trial只做有限次FL rounds而不是一整个FL course 
+2. 每个round采样远小于N的K个用户</p>
+<p>以SHA为例子，Model-tuning Component模块中每个超参数配置都有一个config，每个config都可以扔到FGL runner里面从上次的checkpoint开始跑几个round再保存并获得本config的performance，回到Model-tuning Component后排序。SHA会只保留上半部分表现好的config。<br />
+得益于FS-G对于FGL runner接口的设计和能够save and start FGL course，许多one-shot HPO（单次调优方法）都可以泛化到FGL领域上来。<br />
+另外由于FGL runner的返回值是可配置的，因此从系统角度调优（41）也被FS-G支持。  </p>
+<p>monitoring and personalization<br />
+在FGL语境下我们不仅考虑client-side的metrics（本地loss函数）还在server端进行考虑。<br />
+然后引入一堆metrics，The larger these metrics
+are, the more different client-wise graphs are。同时还可以被可视化和log（第三方WandB and TensorBoard）<br />
+同时FS-G还提供了可以记录update/aggregate过程中产生的任何数量（quantity）的API，用户可以monitor他们并个性化地tune GNN。  </p>
+<h2 id="experiments">experiments</h2>
+<p>为长久以来缺失的FGL领域的benchmark做一个设置，同时在金融领域场景进行一些实验。分别在三个settings下应用四种GNN网络对三个数据集做测试。<br />
+node-level：FGL的测试使用全局评估（用全图测试数据测试而非子图）
+原来所指的cited network指的是其他的学术文献数据集啊。。cora、citeseer、pubmed都是数据集，和FS-G自己构建的FedDBLP作对比<br />
+random-splitter下global表现较好，community_splitter下FGL表现比在全图上训练的要好（某种划分trick导致在GNN上表现变好）  </p>
+<h1 id="federatedscope">FederatedScope</h1>
+<p>FL目前的数据异质化可以分为如下几种：
+1. local data的异质化。Personalized FL（Alysa Ziying Tan, Han Yu, Lizhen Cui, and Qiang Yang. 2021. Towards personalized federated learning. IEEE Transactions on Neural Networks and Learning
+Systems PP (2021).）对local training定制化更加剧了数据本身因为产生组织不同和产生设备不同导致的异质化（这里还没有说到图数据FGL的异质化）
+2. participants resources的异质化，可能用户的本地资源有差异会出现等的情况。
+3. participants behavior异质化。FGL里提到的异质化属于这种，另外不同的backends也属于这种，需要额外对数据做处理。
+4. training goal的异质化。这种比较正常，不同corp的目标不一样，fedavg就可以处理这种问题。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

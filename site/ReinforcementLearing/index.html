@@ -1,0 +1,891 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../CSAPP/">
+      
+      
+        <link rel="next" href="../SICP/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>强化学习 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              强化学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSAPP/" class="md-nav__link">
+        CSAPP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          强化学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        强化学习
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#with-model" class="md-nav__link">
+    第三节 with model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prreward" class="md-nav__link">
+    第四、五节  无模型P、R不可见，但是随意采样状态转移之后还是会获得reward
+  </a>
+  
+    <nav class="md-nav" aria-label="第四、五节 无模型P、R不可见，但是随意采样状态转移之后还是会获得reward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    蒙特卡洛 大数定律下算术平均等于加权平均
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#td" class="md-nav__link">
+    时序差分(TD)
+  </a>
+  
+    <nav class="md-nav" aria-label="时序差分(TD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdlambda" class="md-nav__link">
+    TD（lambda）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-free" class="md-nav__link">
+    第六节 值函数逼近 大规模下的model-free学习
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-gradient-model-free" class="md-nav__link">
+    第七节 policy gradient  还是model-free学习
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SICP/" class="md-nav__link">
+        SICP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithm/" class="md-nav__link">
+        algorithm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../browser/" class="md-nav__link">
+        谈谈浏览器
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diary/" class="md-nav__link">
+        diary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javaWeb/" class="md-nav__link">
+        谷粒商城
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maajyann/" class="md-nav__link">
+        maahyann
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_grammar/" class="md-nav__link">
+        这是第一级标题
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/" class="md-nav__link">
+        mess
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        network
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgraduate/" class="md-nav__link">
+        postgraduate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        Simpread 面向对象和函数式编程的本质区别
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        人工智能考试
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        动手学深度学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        机器学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        矩阵论
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        联邦KGs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          Papers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          Papers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FedGraph/" class="md-nav__link">
+        FedGraph: Federated Graph Learning With Intelligent Sampling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FederatedScope-GNN/" class="md-nav__link">
+        FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        联邦学习和联邦图学习相关
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#with-model" class="md-nav__link">
+    第三节 with model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prreward" class="md-nav__link">
+    第四、五节  无模型P、R不可见，但是随意采样状态转移之后还是会获得reward
+  </a>
+  
+    <nav class="md-nav" aria-label="第四、五节 无模型P、R不可见，但是随意采样状态转移之后还是会获得reward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    蒙特卡洛 大数定律下算术平均等于加权平均
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#td" class="md-nav__link">
+    时序差分(TD)
+  </a>
+  
+    <nav class="md-nav" aria-label="时序差分(TD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdlambda" class="md-nav__link">
+    TD（lambda）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-free" class="md-nav__link">
+    第六节 值函数逼近 大规模下的model-free学习
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy-gradient-model-free" class="md-nav__link">
+    第七节 policy gradient  还是model-free学习
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">强化学习</h1>
+<p>所谓概率密度函数就是概率在这一块分布密一点，函数值就大一点。policy实际上是个概率密度函数。强化学习学的就是这个policy函数，让它驱动agent去玩游戏。强化学习存在两个随机性，agent策略的随机性和环境接受action后状态转移的随机性。  <br />
+Vπ是动作价值函数Qπ的期望，Qπ是Gt的期望，和policy函数π，状态St，动作At有关（其他随机变量St+1、At+1等都被积分掉了），我们又可以把这里的动作A作为随机变量，然后关于A求期望把A消掉，求期望得到的Vπ只和π和s有关。<br />
+概括一下有两种方式用AI控制agent玩游戏，一种是policy函数π，另外一种是optimal action-value function(最优动作-价值函数)Q<em>,两种方法都可行，所以强化学习的任务就学习π函数或学习Q</em> 函数。只要学到两者之一就可以了。<br />
+区别于传统ML的点：
+1. 无监督但是有reward给反馈（某种形式的监督）
+2. feedback存在延时而不是瞬时的（前向传播之后接着就反向传播）
+3. 时序很重要
+4. agent的行为会对环境产生影响（也即影响下一步的observation即状态转移）</p>
+<p>（1）监督学习有反馈，无监督学习无反馈，强化学习是执行多步之后才反馈。
+（2）强化学习的目标与监督学习的目标不一样，即强化学习看重的是行为序列下的<strong>长期收益Gt</strong>，而监督学习往往关注的是和标签或已知输出的误差。
+（3）强化学习的奖惩概念是没有正确或错误之分的，而监督学习标签就是正确的，并且强化学习是一个学习+决策的过程，有和环境交互的能力（交互的结果以惩罚的形式返回），而监督学习不具备。</p>
+<p>基本上所有强化学习问题都可以通过MDPs建模，MDP就是问题的environment且是fully observable的。<br />
+马尔科夫链和马尔科夫过程是一个意思，都代表了一些状态的集合。<br />
+MRP指带value的MP，reward在状态上。<br />
+MDP指带policy的MRP（相比于MRP的固定状态转换概率policy可变）相比MRP，R的含义也从离开状态s获得的收益变成了做出动作a获得的收益，因此bellman方程势必要变。<br />
+<strong>状态价值函数v就是动作价值函数q的期望！根据数学期望原始定义得到。</strong><br />
+先给出v和q的定义式，但实际上并不会使用定义式。<br />
+先直接给出直观上的v和q的含q和v的表达式，再互相带入得到bellman方程。这样状态s的v就会和下一个状态的v有关。q同理。<br />
+如果已知每个动作的最优q那么就可以直接得到最优的策略。其他都从这一点开始衍生，仅此而已。一般MDP找最优策略都是等v和q收敛之后去选择q最大的策略。    </p>
+<h2 id="with-model">第三节 with model</h2>
+<p>在强化学习中，<strong>prediction用来计算一个固定策略的状态或动作值函数</strong>；在prediction问题中，策略是给定的。<strong>Control问题寻找最优策略</strong>；或者说，策略一般是变化的，除非找到了最优策略。<br />
+所谓synchronous backups（同步备份）原意指备份操作和计算操作同时进行，这里指一次状态扫描通过vs'k计算vsk+1<br />
+前面介绍的MDP就完全适用于动态规划，可进行prediction和control任务。<br />
+所谓的策略评估算法（动态规划方法里面的）其实就是一种迭代求v的方法，用到了周围下一个可转移状态的v。需要注意的是，在每次迭代中都需要对状态集进行一次遍历（扫描）以便评估每个状态的值函数。  <br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@master/RL1.png" /><br />
+策略改进算法<br />
+其实就是在已知当前策略的值函数时（例如网格例子），在每个状态采用贪婪策略对当前策略进行改进<br />
+策略评估+策略改进组合就是策略迭代算法，每个iteration先运行策略评估算法待所有状态的值函数收敛，再对每一个状态通过贪心选择最优的π。<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@master/RL2.png" /></p>
+<p>但是事实上所有状态值函数未收敛之前就可以进行贪心选择了，因此有了策略评估一次就停止做贪心选择的值函数迭代算法。  </p>
+<h2 id="prreward">第四、五节  无模型P、R不可见，但是随意采样状态转移之后还是会获得reward</h2>
+<p>解决无模型的MDP问题是强化学习算法的精髓  </p>
+<h3 id="_2">蒙特卡洛 大数定律下算术平均等于加权平均</h3>
+<p>当没有模型时，用经验平均来代替随机变量的期望。（得到值函数的方法不一样，动态规划是求G的期望，蒙特卡洛是靠采样求均值和大数定律）
+同样的，在这样得到的值函数收敛后也要做策略改进。<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@master/RL3.png" /></p>
+<p>动态规划方法计算状态处的值函数时利用了模型P。而在无模型强化学习中，模型是未知的。无模型的强化学习算法要想利用策略评估和策略改善的框架，必须采用其他的方法对当前策略进行评估（计算值函数）。<br />
+跟基于动态规划的方法相比，基于MC的方法只是在值函数估计上有所不同。两者在整个框架上是相同的，即对当前策略进行评估，然后利用学到的值函数进行策略改进。<br />
+MC：先进行一次采样（起始状态任意走到底，记录状态转换和改变状态的Reward，然后回溯，每次将G*γ后再加R，初始G可能是0？这样得到一个初始状态的G）多次采样后对初始状态的G求平均，再将初始状态推广至所有状态。<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@master/RL4.png" />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202310301001211.png" /><br />
+这个公式是根据Gt的算术平均推导的递推，等价于算Gt的算术平均。<br />
+在实际引用中，蒙地卡罗虽然比动态规划消耗要少一点；而且并不需要知道整个环境模型。
+探索策略：指确保MC采样时能访问到每一个状态。使用epsilon-soft策略<br />
+根据采样探索策略和前述improve策略的相同或不同，MC又可分为on-policy和off-policy。  epsilon-soft策略是一种贪心选择策略，epsilon是一个很小的值。<br />
+每次实验更新一次value函数（每个episode可能会多次访问到某个状态s，一次实验完成后遍历状态集计算G的时候就会对同一状态s产生多个G）<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202310221715483.png" /></p>
+<p>但蒙地卡罗有一个比较大的缺点，就是每一次游戏，都需要先从头走到尾，再进行回溯更新。如果最终状态很难达到，那小猴子可能每一次都要转很久很久才能更新一次G值。</p>
+<h3 id="td">时序差分(TD)</h3>
+<p>TD方法是强化学习理论中最核心的内容，是强化学习领域最重要的成果，没有之一。和前述区别点主要在值函数估计方面。<br />
+每个episode每走一步都要做一次值函数更新（即可以在没收敛的episode上更新）。  <br />
+<strong>sarsa 就是学习Q的on-policy TD算法</strong>
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202310231517462.png" /><br />
+最后补上一句外层循环等待Q（s，a）收敛后结束。大概意思是每个episode外层循环先由起始s选一个a，然后就一直进内层循环。到达终止状态但Q还没收敛就接着开下一个episode。 
+<strong>Q-learning 就是学习Q的off-policy TD算法</strong>
+ <img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202310301119767.png" /></p>
+<h4 id="tdlambda">TD（lambda）</h4>
+<p>向后不止看一步而是看n步，并用一个公式的Glambda t综合各个Gnt  </p>
+<h2 id="model-free">第六节 值函数逼近 大规模下的model-free学习</h2>
+<p>之前所讲的的强化学习方法都默认状态是有限个。值函数其实是一个表格，对于状态值函数，其索引是状态；对于行为值函数，其索引是状态-行为对。值函数迭代更新的过程实际上就是对这张表进行迭代更新。因此，之前讲的强化学习算法又称为表格型强化学习。对于状态值函数，其表格的维数为状态的个数。<strong>若状态空间的维数很大，或者状态空间为连续空间，此时值函数无法用一张表格来表示。</strong>这时，我们需要利用函数逼近的方法对值函数进行表示。当值函数利用函数逼近的方法表示后，可以Update parameter w using MC or TD learning。</p>
+<p>用特征向量x去代表一个状态s，用x和w的点积去代替v作为预测结果和真标签v做差构建代价函数。这样模型训练完毕之后输入一个状态就可以得出相应的值函数v。 <br />
+但是强化学习里没有标签，因此用MC、TD中的target来代替。  </p>
+<h2 id="policy-gradient-model-free">第七节 policy gradient  还是model-free学习</h2>
+<p>但大家有没有发现，我们可能走上一个固定的思维，就是我们的学习，一定要算Q值和V值，往死里算。但算Q值和V值并不是我们最终目的呀，我们要找一个策略，能获得最多的奖励。我们可以抛弃掉Q值和V值么？</p>
+<p>答案是，可以，策略梯度(Policy Gradient)算法就是这样一个算法。<br />
+忽略QV值，只通过G的大小去进行学习。所谓policy-based(相对的是value-based和actor-critic)缺点是效率低和局部最优。  </p>
+<p>最优理论 本次策略最优说明上次就已经最优了，说明这个是为了满足dp的最优子结构应该
+value iteration（2）那个图，值迭代公式
+异步备份略
+所谓增量形蒙特卡洛就是根据新ep去更新而不是重新算
+在强化学习中，"自举"（bootstrapping）是指一种通过不断更新已有估计值来改进估计值的方法。这是一个基于已有信息递归地估计新信息的过程，用于估计值函数、策略或其他相关学习任务。
+Generalised Policy Iteration (Refresher)
+所谓泛化策略迭代就是之前说的那个2步走过程
+SARSA 是一个特定的强化学习算法，它采用状态-动作对(state-action pair)的方式来学习值函数，并且是一个"On-policy"方法，因为它在学习的过程中使用当前策略来选择动作。
+"On-policy" 学习方法的优点是可以保持较高的稳定性，因为它们在学习和执行时都使用相同的策略，但缺点是可能会导致较慢的学习速度，特别是在需要大量探索的情况下。这是因为代理程序必须使用当前策略来选择动作，可能会错过更好的策略。
+q learning 选择策略做epsilon更新，但优化策略没有用epsilon，也就是没有给小概率探索机会</p>
+<p>所谓 deterministic policy确定性策略指一个动作只有一种可能变成的状态(MRP)</p>
+<p>Policy Gradient Theorem这一页才是干货
+模型输出是概率分布，输入是状态</p>
+<p>要获取 LlamaModel 模型的输出，你需要使用输入数据调用模型的前向传播方法 (forward)。在前面的讨论中，你提到了 forward 方法，该方法通常定义在模型类中。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

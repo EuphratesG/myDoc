@@ -1,0 +1,834 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../postgraduate/">
+      
+      
+        <link rel="next" href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Simpread 面向对象和函数式编程的本质区别 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Simpread 面向对象和函数式编程的本质区别
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CSAPP/" class="md-nav__link">
+        CSAPP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearing/" class="md-nav__link">
+        强化学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SICP/" class="md-nav__link">
+        SICP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithm/" class="md-nav__link">
+        algorithm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../browser/" class="md-nav__link">
+        谈谈浏览器
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diary/" class="md-nav__link">
+        diary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javaWeb/" class="md-nav__link">
+        谷粒商城
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        linux
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maajyann/" class="md-nav__link">
+        maahyann
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_grammar/" class="md-nav__link">
+        这是第一级标题
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/" class="md-nav__link">
+        mess
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        network
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgraduate/" class="md-nav__link">
+        postgraduate
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Simpread 面向对象和函数式编程的本质区别
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Simpread 面向对象和函数式编程的本质区别
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    编程的本质
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据存放方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据访问方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    下面上一段代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-oo" class="md-nav__link">
+    Javascript 超越了函数式以及 OO
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        人工智能考试
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        动手学深度学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        机器学习
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        矩阵论
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        联邦KGs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          Papers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          Papers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FedGraph/" class="md-nav__link">
+        FedGraph: Federated Graph Learning With Intelligent Sampling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/FederatedScope-GNN/" class="md-nav__link">
+        FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../papers/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        联邦学习和联邦图学习相关
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    编程的本质
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据存放方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据访问方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    下面上一段代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-oo" class="md-nav__link">
+    Javascript 超越了函数式以及 OO
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Simpread 面向对象和函数式编程的本质区别</h1>
+
+<blockquote>
+<p>本文由 <a href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a href="https://zhuanlan.zhihu.com/p/57708956">zhuanlan.zhihu.com</a></p>
+</blockquote>
+<h2 id="_1"><strong>编程的本质</strong></h2>
+<p>当写过许许多多程序后，接触了那么多编程模式、设计模式、框架、语言、算法、数据结构以后，就会发现编程的本质万变不离其宗就是，操纵一坨数据。当然操纵的方式有许多，存储的方式也五花八门，但是本质不变，就是访问数据（读取以及改变）。</p>
+<p>下面谈一谈我对两种编程方式的理解，就是面向对象编程，以及函数式编程。我用 JavaScript 这种神奇的语言来解释，因为 JavaScript 既可以面向对象编程，也可以函数式编程。</p>
+<h2 id="_2">数据存放方式</h2>
+<p>1、对于 OO（面向对象，下同），数据存放在对象的属性（成员变量）里面，以及静态成员（全局变量）</p>
+<p>2、对于函数式，数据存放在闭包（各级作用域）里面，作用域包括全局作用域。</p>
+<h2 id="_3">数据访问方式</h2>
+<p>数据存放方式决定了访问的方式。</p>
+<p>1、对于 OO 来说，访问数据（全局变量除外）需要先获取对象的引用，然后再进行操作（直接访问——公共属性，或者调用成员函数 / 方法访问——私有属性）</p>
+<p>2、对于函数式，访问数据是直接访问（通过函数入参或者作用域链查找）</p>
+<h2 id="_4">下面上一段代码</h2>
+<pre><code>//OO
+class Foo {
+  constructor(){
+    this.bar = 0
+  }
+}
+let foo = new Foo()
+foo.bar ++
+
+//函数式
+
+let bar = 0
+function foo(){
+    bar ++
+}
+foo()
+
+
+</code></pre>
+<p>这是随便写了一些没有用代码，只是为了展示两种风格的编程方式。</p>
+<p>从中我们可以看出一些东西，OO 是通过持有，以及传递对象的方式去让别的对象来操作数据，而对象也会是其他对象的成员，层层嵌套。当你想要访问某一个数据的时候，就需要顺着对象的引用链条去找，一步步去操作。</p>
+<p>函数式传递的则是函数，调用函数即操作数据，传递函数的时候其实隐含着传递了函数创建的时候所附带的作用域，这个在表面上看不出来，在底层是有的。</p>
+<p><strong>OO 所谓的对象，本质上就是函数式中的作用域。</strong></p>
+<p>为了理解这句话，我们来看<strong>高阶函数</strong>的本质</p>
+<pre><code>function foo(x){
+  let bar = x
+  return function(){
+     return bar
+  }
+}
+let Bar = foo(1)
+console.log(Bar())//1
+
+</code></pre>
+<p>当调用 foo(1) 的时候返回一个函数，这个函数可以访问 foo 函数内部的 bar 变量，这就是高阶函数。如果翻译成 OO 思想大家就知道怎么回事了。</p>
+<pre><code>class Foo{
+  constructor(x){
+    this.bar = x
+  }
+  Bar(){
+    return this.bar
+  }
+}
+let foo = new Foo(1)
+console.log(foo.Bar())
+
+</code></pre>
+<p>看上去是不是差不多。其实在 C# 中对 lambda 表达式的编译就是这个原理。会内部创建一些类。</p>
+<p>当然高阶函数的写法肯定不会这么啰嗦，会写的比较优雅。(<strong>这就是本质区别</strong>）</p>
+<pre><code>let foo = bar=&gt;()=&gt;bar
+let Bar = foo(1)
+console.log(Bar())//1
+
+</code></pre>
+<p>所以 OO 编程，是面向作用域编程，而函数式编程，是面向功能编程。</p>
+<p>函数式编程有一个巨大的优势，就是作用域链，也就是说函数可以访问的变量范围要远远大于 OO，灵活性就成几何级数上升。换句话也可以说 OO 的约束性更强。</p>
+<h2 id="javascript-oo">Javascript 超越了函数式以及 OO</h2>
+<p>在 JS 中约束进一步被打破，JS 中可以修改函数的 “作用域”，类的成员方法可以以另一个对象为作用域。JS 还可以更换父类，这在其他 OO 语言是难以想象和不可理喻的。</p>
+<p>所以 Javascript 可以用最简短代码来代替 OO 许多代码，究其本质，就是 OO 需要不断的传递、持有不同的作用域——对象。而 Javascript 只需要处在作用域链内，即可轻易访问到所需要的数据。</p>
+<p>早期的高级编程语言（1950s）多是面向过程的，所谓过程就是对逻辑执行的实现，表明程序要先做什么后做什么，就像是对流程图的翻译，简单直接，适合小型程序。随着软件复杂度的提升，出现了两次软件危机，催生了面向对象的出现。第一次软件危机（1960s、1970s）即软件质量低下、项目无法如期完成、项目严重超支等，也导致了一些重大事故，如1963年美国水手一号火箭发射失败。应对方案是采用结构化设计，即取消goto（采用顺序、选择、循环这三种基本控制来构造程序），采取“自顶向下、逐步细化、模块化”的指导思想来构建程序，实现了对复杂逻辑的分治。第二次软件危机（1980s）是软件的生产力远远跟不上硬件和业务的发展，主要体现在软件的“扩展”变得非常复杂。为了应对这次危机，新兴的编程语言采用面向对象，进一步将数据结构和算法内聚，进行封装，保证其可重用与解耦合，其中常见技巧便成为了大家常说的设计模式。至此，高级编程语言发展基本稳定。而函数式编程在早期编程语言中就有，比如lisp，虽然面向对象语言大都后面支持了函数式编程，但其像是一种语法糖，相比于面向过程到面向对象，并不是一个巨大的飞跃。当面向对象成为主流后，如果需要传递一个函数，那就需要先将其封装为对象进行传递，与面向过程的c仅传递函数指针相比，明显此时变得更复杂了，所以催生出了函数式编程的语法糖，作为对面向对象编程的补充，将函数看做一等公民，二不再需要其一定附着与某个对象，方便对函数的使用。</p>
+<p>函数式编程把数据与操作逻辑区分开, 然后各种组合;</p>
+<p>面向对象把数据与操作逻辑合并到一块, 形成一个封装, 再各种应用;</p>
+<p>分开使用显然比合在一起使用要灵活, 真正需要封装的时候再去谈面向对象...</p>
+<p>偏偏人们已经把面向对象当成了组织代码的方式了, 不需要封装的时候也非要用面向对象...函数式编程对开发者要求更高一些，需要对程序的理解更深入。面向对象则更浅显，所以为了让公司里面良莠不齐的开发人员统一协作，就逐渐采用了以面向对象为主的开发模式。
+闭包和对象都是把数据从stack复制到heap里去
+程序本质就是操作数据，oop和fp都把数据封装到属性中，oop通过对象封装和操作属性。fp通过函数来操作属性。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
