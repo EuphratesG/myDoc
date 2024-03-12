@@ -17,3 +17,11 @@ linux环境 docker mysql redis
 windows idea java1.8 mvn  
 idea开发后台微服务项目  
 vscode开发前端的后台管理系统  
+
+
+idea需要gradle的项目直接下载好gradle之后放在wrapper。properties下面（压缩包就行）就可以了  
+
+
+逆向工程搞出基本的增删改查代码简化开发
+
+数据太多不设置外键，因为要省去检查外键的操作  
