@@ -1,0 +1,1159 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E8%81%94%E9%82%A6KGs/">
+      
+      
+        <link rel="next" href="../../infra/6.824/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>联邦学习和联邦图学习相关 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              联邦学习和联邦图学习相关
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    这是一个欢迎页面
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javaWeb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java学习路线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LLM&dl
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            LLM&dl
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/ReinforcementLearing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/ai_agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG 和使用工具在智能体（AI agents）解决大模型幻觉（hallucination）方面的异同
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    人工智能考试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动手学深度学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习考试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LLM%26dl/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%9D%E7%BB%B4%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度学习相关的延伸
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    fedGraphRAG mess
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            fedGraphRAG mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FedGraph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FedGraph: Federated Graph Learning With Intelligent Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FederatedScope-GNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联邦KGs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    联邦学习和联邦图学习相关
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    联邦学习和联邦图学习相关
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      图学习、联邦学习简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fl-with-structured-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      FL WITH STRUCTURED DATA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FL WITH STRUCTURED DATA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-client-information-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Client Information Reconstruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-instance-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overlapping Instance Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-iid-data-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-IID Data Adaptation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structured-fl" class="md-nav__link">
+    <span class="md-ellipsis">
+      STRUCTURED FL
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Infra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/6.824/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.824
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/CSAPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/SICP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SICP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mess
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/jinnseikann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iroiro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/maajyann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    maahyann
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/mess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simpread 面向对象和函数式编程的本质区别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    矩阵论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      图学习、联邦学习简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fl-with-structured-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      FL WITH STRUCTURED DATA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FL WITH STRUCTURED DATA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-client-information-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Client Information Reconstruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-instance-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overlapping Instance Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-iid-data-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-IID Data Adaptation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structured-fl" class="md-nav__link">
+    <span class="md-ellipsis">
+      STRUCTURED FL
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">联邦学习和联邦图学习相关</h1>
+<p>联邦学习，主要用于解决当无法直接获取到有效数据的时候，如何进行机器学习。换句话说是在数据不能直接使用的情况下，远端进行学习。关注重点，是在数据的安全和隐私得到保证下进行远端学习。分布式学习，是多机器并行模式。这里可以是：数据并行学习，模型合成（此时和联邦学习模式差不多，但是没有隐私限制），模型并行学习。关注重点，是如何能让机器学习<strong>并行化</strong>来提高学习速度。</p>
+<p>把数据集split到用户之后一定会产生非独立同分布问题。<br />
+生物医学、社交网络（都存在隐私数据问题）<br />
+GNN常用的公开数据集大致有分子、蛋白质、论文引用网络、社交网络等这几类<br />
+COLLAB 一共5000张图，3个领域  </p>
+<p>分子数据集：MUTAG, BZR, COX2, DHFR, PTC_MR, AIDS, NCI1
+蛋白质数据集：ENZYMES, DD, PROTEINS
+社交网络数据集：COLLAB, IMDB-BINARY, IMDBMULTI  </p>
+<p>MUTAG、PTC-MR、NCI109数据集为分子化合物数据集，每个graph代表一个硝基化合物分子，有两个类别，代表这个分子是诱变芳香族或杂芳香族。n表示结点数，m表示边的个数，N表示图的个数
+DS_A.txt (m lines)：图的邻接矩阵，每一行的结构为(row, col)，即一条边。
+DS_graph_indicator.txt (n lines)：表明结点属于哪一个图的文件。
+DS_graph_labels.txt (N lines)：图的labels。
+DS_node_labels.txt (n lines)：结点的labels。
+DS_edge_labels.txt (m lines)：边labels。
+DS_edge_attributes.txt (m lines)：边特征。
+DS_node_attributes.txt (n lines)：结点的特征。
+DS_graph_attributes.txt (N lines)：图的特征，可以理解为全局变量<br />
+分子数据集<br />
+AIDS 艾滋病筛选化合物数据集 node代表一种元素，一张图是一个化合物（共2000张图），图label代表原子或者离子化合物，边label代表化学价、node属性（元素、电荷、x、y）
+蛋白质数据集：<br />
+Protein数据集：每个节点是一个secondary structure elements，如果两个节点在氨基酸序列3D空间中是相邻节点就会存在一条边。<br />
+社交网络数据集：<br />
+IMDB数据集：每个节点代表一个演员，每条边代表两个演员是否出现在同一个电影里。IMDB-BINARY类别有两个：爱情片和动作片如果同时是爱情片和动作片的话，就会归类为动作片。IMDB-MULTI则在爱情片和动作片的基础上，加了一个科幻片类别。
+COLLAB数据集：每个节点代表一个researcher，每个graph我猜是代表了一个科研团体？每一个Graph有一个类别，共有高能物理、凝聚态物理和天体物理3个类别。</p>
+<p>FGML两个setting：
+FL with structured data 训练时数据全部locally<br />
+structured FL 用户之间存在client级别的图（用户之间存在relation）,但数据集不一定是图。    </p>
+<p>相较于传统FL，FGML需要额外关注以下四个问题：</p>
+<ol>
+<li>跨用户端的遗失信息，各用户端只有本地子图，无法在节点表征阶段考虑到原本全局图中的邻居节点信息；  </li>
+<li>结构信息泄露，分享邻接矩阵或节点嵌入信息都有可能增加图结构信息泄露的风险；  </li>
+<li>跨用户端的数据异构性，不同用户端间的图结构/节点特征信息分布可能大相径庭，加剧了非独立同分布特性；  </li>
+<li>参数处理策略，尤其针对结构联邦，可以充分利用用户端间的结构信息设计更有效的参数聚合/更新策略；  </li>
+</ol>
+<h2 id="_2">图学习、联邦学习简介</h2>
+<p>图可以分为同质图和异质图（顶点或边有不同的type）<br />
+图学习主要是去学图顶点的embedding/representation，专门搞出一个矩阵V*n的矩阵。图级别的representation可以由顶点级别的embedding池化而来。图又可以分为同构图和异构图（典型的像KGs和user-item图）<br />
+传统FL：最后的loss就是对每个用户的本地数据集训练的loss做一个加权平均（根据各个用户那里的采样个数进行加权）。FL传统算法FedAvg：服务器和用户之间传输的数据仅仅只是模型参数model的θ矩阵。某次循环开始时服务器给selected的用户本轮的模型参数，用户在本地数据集训练模型，本地训练完毕后各个用户上传更新后的参数给server聚合，聚合完毕后开始下一轮。 <br />
+有趣的是GNN和FL都涉及了aggregate，GNN里面aggregate了邻居节点的信息更新本节点的信息，FL里面aggregate了selected用户对model参数的更新信息然后由服务器聚合新的model参数。  </p>
+<p>FL with structured data 又分为每个用户本地数据集有很多图（一般是图层面的学习）或single的图/大图的子图（一般是顶点层面的学习）<br />
+structured FL 用户之间存在client级别的关系图。值得注意的是structured FL用户本地的数据不一定非要是非欧式数据。<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202310131118236.png" /></p>
+<h2 id="fl-with-structured-data">FL WITH STRUCTURED DATA</h2>
+<p>客户拥有私有的非欧式数据集，由服务器协调共同训练一个图学习模型。  </p>
+<h3 id="cross-client-information-reconstruction">Cross-Client Information Reconstruction</h3>
+<p>为了解决上面所述问题1 The existing techniques can be categorized as 重建跨用户的节点之间的边信息
+intermediate result transmission and missing neighbor generation.<br />
+1. intermediate result transmission：transmit node embeddings directly。（FedGraph）。为了避免用户子图元数据泄露，计算时第一层卷积不用其他用户的邻居节点数据。所谓第l层应该指的是参数矩阵.  问题：实际上很难保证原图的结构还有，传输开销也大
+2. Missing Neighbor Generation  如果server不知道原图信息上面的就没法用了。每个用户都训练一个predictor去预测impaird 子图每个节点隐藏邻居节点的个数，和一个encoder去预测隐藏节点特征  </p>
+<h3 id="overlapping-instance-alignment">Overlapping Instance Alignment</h3>
+<p>所谓重叠实例对齐，不同用户可见的子图可能会包含某些相同的节点，这样在子图中embedding计算完毕后会有多个结果。  解决这个问题的方法就是基于这些用户层面计算的结果去计算一个global的结果。全局图中的一个实例（节点或知识图谱中的实体）可能分散到了多个客户端，在计算其全局嵌入时需要进行对齐。<br />
+1. Homogeneous Graph-Based Alignment  同构图重叠实例对齐目前的工作基本基于vertical FL。情况1所有客户端上都有一组节点V，但在不同客户端上节点属性和节点间关系不同，需要在中央服务器进行表征向量聚合：VFGNN对同一个顶点各个用户得到的H做combine（concat、mean、regression）
+情况2客户端中有一个存有图数据结构信息，其它则只有节点属性，因此不能直接使用现有的图模型方法，可以通过计算近似矩阵进行结构信息共享：SGNN提出相似度矩阵，先在只包含feature的客户端用oh编码嵌入特性，然后根据矩阵计算节点embedding。 
+2.  KG-Based Alignment 略
+3.   User-Item Graph-Based Alignment 略</p>
+<h3 id="non-iid-data-adaptation">Non-IID Data Adaptation</h3>
+<p>非独立同分布数据适配<br />
+解决第三个问题，跨用户端的数据异构性（也是针对垂直FL而言的）  The intuition of mitigating the problem is
+either to train an effective global model or to train specialized models for each client.
+1.  Single Global Model-Based Methods 略
+2.  Personalized Model-Based Methods 略</p>
+<h2 id="structured-fl">STRUCTURED FL</h2>
+<p>数据隐私性（用户对于数据有完全的自主权）、传统ml通常数据比较集中在一个server<br />
+用户自己数据不够，传统要将各个用户整合到服务器去train。联邦学习各个用户可以一起合作分别在自己设备上train不需要把数据发到放服务器。<br />
+因为随着硬件发展，个人设备的算力也可以train了，并不是说完全依赖server去train<br />
+fl主要通过交换加密的参数来保护用户的隐私<br />
+水平fl（有相同的特征空间但没有重叠节点，样本的特征和标签是具备的，训练样本的维度也是一样的，只是训练样本分布在很多的边缘设备上）、垂直fl（有重叠节点但特征空间不同即节点的特征不一样）、联邦迁移学习<br />
+简单一看  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
