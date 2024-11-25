@@ -217,7 +217,7 @@
 
 ### Transformer
 
-**transformer 架构可以说是一切 [llm](https://zhida.zhihu.com/search?content_id=240138000&content_type=Article&match_order=1&q=llm&zhida_source=entity) 的根源**
+**transformer 架构可以说是一切llm的根源**
 
 这里强烈推荐把 [transformer 论文](https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1706.03762)全篇阅读，第一次阅读能对模型有一个定性地认知即可
 
