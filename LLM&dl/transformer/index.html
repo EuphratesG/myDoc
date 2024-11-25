@@ -1,0 +1,1775 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ai_agent/">
+      
+      
+        <link rel="next" href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>transformer相关扣细节 - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transformer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              transformer相关扣细节
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    这是一个欢迎页面
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javaWeb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java学习路线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8E%E5%95%A5%E4%B9%9F%E4%B8%8D%E4%BC%9A%E5%88%B0%20GPT-3%20%E5%92%8C%20InstructGPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从啥也不会到 GPT 3 和 InstructGPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LLM&dl
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            LLM&dl
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG 和使用工具在智能体（AI agents）解决大模型幻觉（hallucination）方面的异同
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    transformer相关扣细节
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    transformer相关扣细节
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-transformer-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、为什么 Transformer 需要进行 Multi-head Attention？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、transformer 是如何处理可变长度数据的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3transformer-q-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、Transformer 为什么 Q 和 K 使用不同的权重矩阵生成，为何不能使用同一个值进行自身的点乘？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4transformer-multi-head-attention-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      4、transformer 中 multi-head attention 中每个 head 为什么要进行降维？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5transformer-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      5、Transformer 计算 attention 的时候为何选择点乘而不是加法？两者计算复杂度和效果上有什么区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-softmax-attention-scaled-dk" class="md-nav__link">
+    <span class="md-ellipsis">
+      6、为什么在进行 softmax 之前需要对 attention 进行 scaled（为什么除以 dk 的平方根），并使用公式推导进行讲解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-attention-score-padding-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      7、在计算 attention score 的时候如何对 padding 做 mask 操作？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8transformer-layer-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      8、transformer 为什么使用 layer normalization，而不是其他的归一化方法？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9transformer-decoder-seq-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      9、在测试或者预测时，Transformer 里 decoder 为什么还需要 seq mask？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10transformer-batch-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      10、Transformer 不同 batch 的长度可以不一样吗？还有同一 batch 内为什么需要长度一样？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11transformer-positional-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      11、Transformer 的 Positional embedding 为什么有用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      12、Transformer 在哪里做了权重共享，为什么可以做权重共享？好处是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13transformer-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      13、transformer 一个 block 中最耗时的部分？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14transformer-positionencoding-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      14、Transformer 使用 positionencoding 会影响输入 embedding 的原特征吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15self-attention-qkv" class="md-nav__link">
+    <span class="md-ellipsis">
+      15、不考虑多头的原因，self-attention 中词向量不乘 QKV 参数矩阵，会有什么问题？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      16、Self-Attention 的时间复杂度是怎么计算的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      17、Transformer 的点积模型做缩放的原因是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-transformer-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      18、大概讲一下 Transformer 的 Encoder 模块？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-embedding-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      19、为何在获取输入词向量之后需要对矩阵乘以 embedding size 的开方？意义是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      20、简单介绍一下 Transformer 的位置编码？有什么意义和优缺点？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      21、你还了解哪些关于位置编码的技术，各自的优缺点是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      22、简单讲一下 Transformer 中的残差结构以及意义。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-transformer-layernorm-batchnormlayernorm-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      23、为什么 transformer 块使用 LayerNorm 而不是 BatchNorm？LayerNorm 在 Transformer 的位置是哪里？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-batchnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      24、简答讲一下 BatchNorm 技术，以及它的优缺点。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      25、简单描述一下 Transformer 中的前馈神经网络？使用了什么激活函数？相关优缺点？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26encoder-decoder-seq2seq-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      26、Encoder 端和 Decoder 端是如何进行交互的？（在这里可以问一下关于 seq2seq 的 attention 知识）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27decoder-encoder-decoder-sequence-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      27、Decoder 阶段的多头自注意力和 encoder 的多头自注意力有什么区别？（为什么需要 decoder 自注意力需要进行 sequence mask)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28transformer-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      28、Transformer 的并行化提现在哪个地方？Decoder 端可以做并行化吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-wordpiece-model-byte-pair-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      29、简单描述一下 wordpiece model 和 byte pair encoding，有实际应用过吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30transformer-dropout-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      30、Transformer 训练的时候学习率是如何设定的？Dropout 是如何设定的，位置在哪里？Dropout 在测试的需要有什么需要注意的吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      31、有哪些令你印象深刻的魔改 transformer？
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    人工智能考试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动手学深度学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习考试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%9D%E7%BB%B4%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度学习相关的延伸
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    fedGraphRAG mess
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            fedGraphRAG mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fedGraphRAG_mess/FedGraph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FedGraph: Federated Graph Learning With Intelligent Sampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fedGraphRAG_mess/FederatedScope-GNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fedGraphRAG_mess/%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联邦KGs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fedGraphRAG_mess/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联邦学习和联邦图学习相关
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Infra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/6.824/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.824
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/CSAPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/SICP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SICP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infra/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mess
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/jinnseikann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iroiro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/maajyann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    maahyann
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/mess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mess
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simpread 面向对象和函数式编程的本质区别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mess/%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    矩阵论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    搜广推
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            搜广推
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%90%9C%E5%B9%BF%E6%8E%A8/%E6%90%9C%E5%B9%BF%E6%8E%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    搜广推
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-transformer-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、为什么 Transformer 需要进行 Multi-head Attention？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、transformer 是如何处理可变长度数据的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3transformer-q-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、Transformer 为什么 Q 和 K 使用不同的权重矩阵生成，为何不能使用同一个值进行自身的点乘？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4transformer-multi-head-attention-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      4、transformer 中 multi-head attention 中每个 head 为什么要进行降维？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5transformer-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      5、Transformer 计算 attention 的时候为何选择点乘而不是加法？两者计算复杂度和效果上有什么区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-softmax-attention-scaled-dk" class="md-nav__link">
+    <span class="md-ellipsis">
+      6、为什么在进行 softmax 之前需要对 attention 进行 scaled（为什么除以 dk 的平方根），并使用公式推导进行讲解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-attention-score-padding-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      7、在计算 attention score 的时候如何对 padding 做 mask 操作？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8transformer-layer-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      8、transformer 为什么使用 layer normalization，而不是其他的归一化方法？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9transformer-decoder-seq-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      9、在测试或者预测时，Transformer 里 decoder 为什么还需要 seq mask？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10transformer-batch-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      10、Transformer 不同 batch 的长度可以不一样吗？还有同一 batch 内为什么需要长度一样？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11transformer-positional-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      11、Transformer 的 Positional embedding 为什么有用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      12、Transformer 在哪里做了权重共享，为什么可以做权重共享？好处是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13transformer-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      13、transformer 一个 block 中最耗时的部分？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14transformer-positionencoding-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      14、Transformer 使用 positionencoding 会影响输入 embedding 的原特征吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15self-attention-qkv" class="md-nav__link">
+    <span class="md-ellipsis">
+      15、不考虑多头的原因，self-attention 中词向量不乘 QKV 参数矩阵，会有什么问题？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      16、Self-Attention 的时间复杂度是怎么计算的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      17、Transformer 的点积模型做缩放的原因是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-transformer-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      18、大概讲一下 Transformer 的 Encoder 模块？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-embedding-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      19、为何在获取输入词向量之后需要对矩阵乘以 embedding size 的开方？意义是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      20、简单介绍一下 Transformer 的位置编码？有什么意义和优缺点？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      21、你还了解哪些关于位置编码的技术，各自的优缺点是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      22、简单讲一下 Transformer 中的残差结构以及意义。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-transformer-layernorm-batchnormlayernorm-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      23、为什么 transformer 块使用 LayerNorm 而不是 BatchNorm？LayerNorm 在 Transformer 的位置是哪里？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-batchnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      24、简答讲一下 BatchNorm 技术，以及它的优缺点。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      25、简单描述一下 Transformer 中的前馈神经网络？使用了什么激活函数？相关优缺点？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26encoder-decoder-seq2seq-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      26、Encoder 端和 Decoder 端是如何进行交互的？（在这里可以问一下关于 seq2seq 的 attention 知识）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27decoder-encoder-decoder-sequence-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      27、Decoder 阶段的多头自注意力和 encoder 的多头自注意力有什么区别？（为什么需要 decoder 自注意力需要进行 sequence mask)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28transformer-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      28、Transformer 的并行化提现在哪个地方？Decoder 端可以做并行化吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-wordpiece-model-byte-pair-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      29、简单描述一下 wordpiece model 和 byte pair encoding，有实际应用过吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#30transformer-dropout-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      30、Transformer 训练的时候学习率是如何设定的？Dropout 是如何设定的，位置在哪里？Dropout 在测试的需要有什么需要注意的吗？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      31、有哪些令你印象深刻的魔改 transformer？
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="transformer">transformer相关扣细节</h1>
+<h2 id="1-transformer-multi-head-attention">1、<a href="https://www.zhihu.com/question/341222779/answer/814111138">为什么 Transformer 需要进行 Multi-head Attention？</a></h2>
+<p>可以类比 CNN 中同时使用<strong>多个滤波器</strong>的作用，直观上讲，多头的注意力<strong>有助于网络捕捉到更丰富的特征 / 信息。</strong>Multi-Head 其实不是必须的，去掉一些头效果依然有不错的效果（而且效果下降可能是因为参数量下降），这是因为在头足够的情况下，这些头已经能够有关注位置信息、关注<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E8%AF%AD%E6%B3%95%E4%BF%A1%E6%81%AF&amp;zhida_source=entity">语法信息</a>、关注罕见词的能力了，再多一些头，无非是一种 enhance 或 noise 而已。</p>
+<h2 id="2transformer">2、<a href="https://www.zhihu.com/question/445895638/answer/1786447741">transformer 是如何处理可变长度数据的？</a></h2>
+<p>对不等长的数据，按照最长或者固定长度进行补齐，利用 padding mask 机制，补齐的数据并不参与训练；和 RNN 的 <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=2&amp;q=mask%E6%9C%BA%E5%88%B6&amp;zhida_source=entity">mask 机制</a>一样。RNN 是通过 time step 方式处理的，transformer 通过计算 attention 得分矩阵处理的。</p>
+<h2 id="3transformer-q-k"><strong>3、</strong><a href="https://www.zhihu.com/question/319339652/answer/1617078433">Transformer 为什么 Q 和 K 使用不同的权重矩阵生成，为何不能使用同一个值进行自身的点乘？</a></h2>
+<p>使用 Q/K/V 不相同可以保证在不同空间进行投影，增强了表达能力，提高了泛化能力。</p>
+<p><a href="https://www.zhihu.com/question/319339652">transformer 中为什么使用不同的 K 和 Q， 为什么不能使用同一个值？</a></p>
+<p>如果 K 和 Q 使用不同的值的话, A 对 B 的重要程度是 Key(A) * Query(B), 而 B 对 A 的重要程度是 Key(B) * Query(A). 可以看出, A 对 B 的重要程度与 B 对 A 的重要程度是不同的. 然而, 如果 K 和 Q 是一样的, 那么 A 对 B 的重要程度和 B 对 A 的重要程度是一样的.</p>
+<p>我们来看看原论文中的公式：</p>
+<p>$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V\$$</p>
+<p>Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V\</p>
+<p>这就是我们非常熟悉的 Self-Attention 的计算公式，在这里 Q 和 K 是相同的，但是在真正的应用中，通常会分别给 K 和 Q 乘上<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8F%82%E6%95%B0%E7%9F%A9%E9%98%B5&amp;zhida_source=entity">参数矩阵</a>，这样公式会变成如下这样（其中两个参数矩阵进行共享的话，就是 reformer 的做法）：</p>
+<p>$$Attention(Q,K,V)=softmax(\frac{Q(W_qW^T_k)K^T}{\sqrt{d_k}})V\$$</p>
+<p>Attention(Q,K,V)=softmax(\frac{Q(W_qW^T_k)K^T}{\sqrt{d_k}})V\</p>
+<p>在这里，我们把目光放在 Softmax 上，当 Q 和 K 乘上不同的参数矩阵时，根据 softmax 函数的性质，在给定一组数组成的向量，Softmax 先将这组数的差距拉大（由于 <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=exp%E5%87%BD%E6%95%B0&amp;zhida_source=entity">exp 函数</a>），然后归一化，它实质做的是一个 soft 版本的 argmax 操作，得到的向量接近一个 <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=one-hot%E5%90%91%E9%87%8F&amp;zhida_source=entity">one-hot 向量</a>（接近程度根据这组数的数量级有所不同）。这样做保证在不同空间进行投影，增强了表达能力，提高了<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=2&amp;q=%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B&amp;zhida_source=entity">泛化能力</a>。</p>
+<p>如果令 Q 和 K 相同，那么得到的模型大概率会得到一个类似单位矩阵的 attention 矩阵，这样 <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=self-attention&amp;zhida_source=entity">self-attention</a> 就退化成一个 point-wise 线性映射，对于注意力上的表现力不够强。</p>
+<h2 id="4transformer-multi-head-attention-head">4、<a href="https://zhuanlan.zhihu.com/p/360144789/ht%3C/i%3Etps://www.zhihu.com/question%3Ci%3E/35%3C/i%3E0369171/answer/1718672303">transformer 中 multi-head attention 中每个 head 为什么要进行降维？</a></h2>
+<p>在<strong>不增加时间复杂度</strong>的情况下，同时，借鉴 <strong>CNN 多核</strong>的思想，在<strong>更低的维度</strong>，在<strong>多个独立的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E7%89%B9%E5%BE%81%E7%A9%BA%E9%97%B4&amp;zhida_source=entity">特征空间</a></strong>，<strong>更容易</strong>学习到更丰富的特征信息。</p>
+<h2 id="5transformer-attention">5、Transformer 计算 attention 的时候为何选择点乘而不是加法？两者计算复杂度和效果上有什么区别？</h2>
+<p>为了计算更快。矩阵加法在加法这一块的计算量确实简单，但是作为一个整体计算 attention 的时候相当于一个隐层，整体计算量和<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E7%82%B9%E7%A7%AF&amp;zhida_source=entity">点积</a>相似。在效果上来说，从实验分析，两者的效果和 dk 相关，dk 越大，加法的效果越显著</p>
+<h2 id="6-softmax-attention-scaled-dk">6、<a href="https://www.zhihu.com/question/339723385/answer/782509914">为什么在进行 softmax 之前需要对 attention 进行 scaled（为什么除以 dk 的平方根），并使用公式推导进行讲解</a></h2>
+<p><strong>在输入数量较大时，softmax 将几乎全部的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83&amp;zhida_source=entity">概率分布</a>都分配给了最大值对应的标签</strong>。也就是说<strong>极大的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E7%82%B9%E7%A7%AF%E5%80%BC&amp;zhida_source=entity">点积值</a>将整个 softmax 推向梯度平缓区，使得收敛困难</strong>，<strong>梯度消失为 0，造成参数更新困难</strong>。</p>
+<h2 id="7-attention-score-padding-mask">7、在计算 attention score 的时候如何对 padding 做 mask 操作？</h2>
+<p>这里是因为 padding 都是 0，e0=1, 但是 softmax 的函数，也会导致为 padding 的值占全局一定概率，mask 就是让这部分值取无穷小，让他再 softmax 之后基本也为 0，不去影响非 attention socore 的分布</p>
+<h2 id="8transformer-layer-normalization">8、<a href="https://zhuanlan.zhihu.com/p/360144789/https%3C/i%3E://www.zhihu.com/question/395811291/answer/1257223002">transformer 为什么使用 layer normalization，而不是其他的归一化方法？</a></h2>
+<p><em>参见：</em><a href="https://zhuanlan.zhihu.com/p/360144789/https%3C/i%3E://www.zhihu.com/question/395811291/answer/1257223002">transformer 为什么使用 layer normalization，而不是其他的归一化方法？</a></p>
+<h2 id="9transformer-decoder-seq-mask">9、<a href="https://zhuanlan.zhihu.com/p/360144789/%3Ci%3Ehttps://www%3C/i%3E.zhihu.c%3Ci%3Eom/%3C/i%3Equestion/369075515/answer/994819222">在测试或者预测时，Transformer 里 decoder 为什么还需要 seq mask？</a></h2>
+<h2 id="10transformer-batch-batch">10、<a href="https://zhuanlan.zhihu.com/p/360144789/ht%3C/i%3Etps://www.zhihu.com/questio%3Ci%3En/4%3C/i%3E39438113/answer/1714391336">Transformer 不同 batch 的长度可以不一样吗？还有同一 batch 内为什么需要长度一样？</a></h2>
+<h2 id="11transformer-positional-embedding">11、<a href="https://www.zhihu.com/question/385895601/answer/1146997944">Transformer 的 Positional embedding 为什么有用？</a></h2>
+<p>参见：<a href="https://www.zhihu.com/question/385895601/answer/1146997944">Transformer 的 Positional embedding 为什么有用？</a></p>
+<h2 id="12transformer">12、<a href="https://www.zhihu.com/question/333419099/answer/743341017">Transformer 在哪里做了权重共享，为什么可以做权重共享？好处是什么？</a></h2>
+<p>Transformer 在两个地方进行了权重共享：</p>
+<p><strong>（1）</strong>Encoder 和 Decoder 间的 Embedding 层权重共享；</p>
+<p><strong>（2）</strong>Decoder 中 Embedding 层和 FC 层权重共享。</p>
+<p><strong>对于（1）</strong>，《<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=Attention+is+all+you+need&amp;zhida_source=entity">Attention is all you need</a>》中 Transformer 被应用在机器翻译任务中，源语言和目标语言是不一样的，但它们可以共用一张大词表，对于两种语言中共同出现的词（比如：数字，标点等等）可以得到更好的表示，而且对于 Encoder 和 Decoder，<strong>嵌入时都只有对应语言的 embedding 会被激活</strong>，因此是可以共用一张词表做权重共享的。</p>
+<p>论文中，Transformer 词表用了 bpe 来处理，所以最小的单元是 subword。英语和德语同属<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E6%97%A5%E8%80%B3%E6%9B%BC%E8%AF%AD%E6%97%8F&amp;zhida_source=entity">日耳曼语族</a>，有很多相同的 subword，可以共享类似的语义。而像中英这样相差较大的语系，语义共享作用可能不会很大。</p>
+<p>但是，共用词表会使得词表数量增大，增加 softmax 的计算时间，因此实际使用中是否共享可能要根据情况权衡。</p>
+<p>该点参考：<a href="https://www.zhihu.com/question/333419099/answer/743341017">https://www.zhihu.com/question/3334</a></p>
+<p><strong>对于（2）</strong>，Embedding 层可以说是通过 onehot 去取到对应的 embedding 向量，FC 层可以说是相反的，通过向量（定义为 x）去得到它可能是某个词的 softmax 概率，取概率最大（贪婪情况下）的作为预测值。</p>
+<p>那哪一个会是概率最大的呢？在 FC 层的每一行量级相同的前提下，理论上和 x 相同的那一行对应的点积和 softmax 概率会是最大的（可类比本文问题 1）。</p>
+<p>因此，Embedding 层和 FC 层权重共享，<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=5&amp;q=Embedding%E5%B1%82&amp;zhida_source=entity">Embedding 层</a>中和向量 x 最接近的那一行对应的词，会获得更大的预测概率。实际上，Decoder 中的 <strong>Embedding 层和 FC 层有点像互为<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E9%80%86%E8%BF%87%E7%A8%8B&amp;zhida_source=entity">逆过程</a></strong>。</p>
+<p>通过这样的权重共享可以减少参数的数量，加快收敛。</p>
+<p>但开始我有一个困惑是：Embedding 层参数维度是：(v,d)，FC 层参数维度是：(d,v)，可以直接共享嘛，还是要转置？其中 v 是词表大小，d 是 <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=embedding%E7%BB%B4%E5%BA%A6&amp;zhida_source=entity">embedding 维度</a>。</p>
+<p>查看 pytorch 源码发现真的可以直接共享：</p>
+<pre><code>fc = nn.Linear(d, v, bias=False)    # Decoder FC层定义
+​
+weight = Parameter(torch.Tensor(out_features, in_features))   # Linear层权重定义
+
+</code></pre>
+<p>Linear 层的权重定义中，是按照 (out_features, in_features) 顺序来的，实际计算会先将 weight 转置在乘以输入矩阵。所以 FC 层 对应的 Linear 权重维度也是 (v,d)，可以直接共享。</p>
+<h2 id="13transformer-block">13、transformer 一个 block 中最耗时的部分？</h2>
+<p>可以从参数量的角度回答</p>
+<h2 id="14transformer-positionencoding-embedding">14、<a href="https://zhuanlan.zhihu.com/p/360144789/http%3Ci%3Es://www.zhihu.co%3C/i%3Em/question/350116316/answer/864616018">Transformer 使用 positionencoding 会影响输入 embedding 的原特征吗？</a></h2>
+<p>参见：<a href="https://www.zhihu.com/question/350116316/answer/864616018">Transformer 使用 position encoding 会影响输入 embedding 的原特征吗？</a></p>
+<h2 id="15self-attention-qkv">15、不考虑多头的原因，self-attention 中词向量不乘 QKV 参数矩阵，会有什么问题？</h2>
+<p>Self-Attention 的核心是<strong>用文本中的其它词来增强目标词的语义表示</strong>，从而更好的利用上下文的信息。</p>
+<p>self-attention 中，sequence 中的每个词都会和 sequence 中的每个词做点积去计算相似度，也包括这个词本身。</p>
+<p>对于 self-attention，一般会说它的 q=k=v，这里的相等实际上是指它们来自同一个<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E5%9F%BA%E7%A1%80%E5%90%91%E9%87%8F&amp;zhida_source=entity">基础向量</a>，而在实际计算时，它们是不一样的，因为这三者都是乘了 QKV 参数矩阵的。那如果不乘，每个词对应的 q,k,v 就是完全一样的。</p>
+<p>在相同量级的情况下，qi 与 ki 点积的值会是最大的（可以从 “两数和相同的情况下，两数相等对应的积最大” 类比过来）。</p>
+<p>那在 softmax 后的加权平均中，该词本身所占的比重将会是最大的，使得其他词的比重很少，无法有效利用上下文信息来增强当前词的语义表示。</p>
+<p>而乘以 QKV 参数矩阵，会使得每个词的 q,k,v 都不一样，能很大程度上减轻上述的影响。</p>
+<p>当然，QKV 参数矩阵也使得多头，类似于 CNN 中的多核，去捕捉更丰富的特征 / 信息成为可能。</p>
+<h2 id="16self-attention">16、<strong>Self-Attention 的时间复杂度是怎么计算的？</strong></h2>
+<p>Self-Attention 时间复杂度： $O(n^2 \cdot d)$O(n^2 \cdot d) ，这里，n 是序列的长度，d 是 embedding 的维度。</p>
+<p>Self-Attention 包括<strong>三个步骤：相似度计算，softmax 和加权平均</strong>，它们分别的时间复杂度是：</p>
+<p>相似度计算可以看作大小为 (n,d) 和(d,n)的两个矩阵相乘： $(n,d)<em>(d,n)=O(n^2 \cdot d)$(n,d)</em>(d,n)=O(n^2 \cdot d) ，得到一个 (n,n) 的矩阵</p>
+<p>softmax 就是直接计算了，时间复杂度为 $O(n^2)$O(n^2)</p>
+<p>加权平均可以看作大小为 (n,n) 和(n,d)的两个矩阵相乘： $(n,n)<em>(n,d)=O(n^2 \cdot d)$(n,n)</em>(n,d)=O(n^2 \cdot d) ，得到一个 (n,d) 的矩阵</p>
+<p>因此，Self-Attention 的时间复杂度是 $O(n^2 \cdot d)$O(n^2 \cdot d) 。</p>
+<p>这里再分析一下 Multi-Head Attention，它的作用类似于 CNN 中的多核。</p>
+<p>多头的实现不是循环的计算每个头，而是通过 transposes and reshapes，用<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95&amp;zhida_source=entity">矩阵乘法</a>来完成的。</p>
+<blockquote>
+<p>In practice, the multi-headed attention are done with transposes and reshapes rather than actual separate tensors. —— 来自 google BERT 源码</p>
+</blockquote>
+<p>Transformer/BERT 中把 <strong>d ，</strong>也就是 hidden_size/embedding_size 这个维度做了 reshape 拆分，可以去看 Google 的 TF <a href="https://link.zhihu.com/?target=https%3A//github.com/google-research/bert">源码</a>或者上面的 pytorch 源码：</p>
+<blockquote>
+<p>hidden_size (d) = num_attention_heads (m) * attention_head_size (a)，也即 d=m*a</p>
+</blockquote>
+<p>并将 num_attention_heads 维度 transpose 到前面，使得 Q 和 K 的维度都是 (m,n,a)，这里不考虑 batch 维度。</p>
+<p>这样点积可以看作大小为 (m,n,a) 和(m,a,n)的两个张量相乘，得到一个 (m,n,n) 的矩阵，其实就相当于 (n,a) 和(a,n)的两个矩阵相乘，做了 m 次，时间复杂度（感谢评论区指出）是 $O(n^2 \cdot m \cdot a)=O(n^2 \cdot d)$O(n^2 \cdot m \cdot a)=O(n^2 \cdot d) 。</p>
+<p>张量乘法时间复杂度分析参见：<a href="https://link.zhihu.com/?target=https%3A//liwt31.github.io/2018/10/12/mul-complexity/">矩阵、张量乘法的时间复杂度分析</a></p>
+<p>因此 Multi-Head Attention 时间复杂度也是 $O(n^2 \cdot d)$O(n^2 \cdot d) ，复杂度相较单头并没有变化，主要还是 transposes and reshapes 的操作，相当于把一个大矩阵相乘变成了多个小矩阵的相乘。</p>
+<h2 id="17transformer"><strong>17、Transformer 的点积模型做缩放的原因是什么？</strong></h2>
+<p>参考：<a href="https://www.zhihu.com/question/339723385">https://www.zhihu.com/question/339723385</a></p>
+<h2 id="18-transformer-encoder">18、大概讲一下 Transformer 的 Encoder 模块？</h2>
+<p>参见：<a href="https://zhuanlan.zhihu.com/p/151586285">DASOU：答案解析 (2)-3 分钟彻底掌握 Transformer 的 Encoder—满满干货！！</a></p>
+<h2 id="19-embedding-size">19、为何在获取输入词向量之后需要对矩阵乘以 embedding size 的开方？意义是什么？</h2>
+<pre><code>embeddings = tf.keras.layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim,
+                                           dtype=d_type, name=&quot;{}_embeddings&quot;.format(name))(inputs)
+embeddings *= tf.math.sqrt(x=tf.cast(x=embedding_dim, dtype=d_type), name=&quot;{}_sqrt&quot;.format(name))
+
+</code></pre>
+<p>使用 Keras 的 Embedding，其初始化方式是 xavier init，而这种方式的方差是 1/embedding size，因此乘以 embedding size 的开方使得 embedding matrix 的方差是 1，在这个 scale 下可能更有利于 embedding matrix 的收敛。</p>
+<h2 id="20-transformer">20、简单介绍一下 Transformer 的位置编码？有什么意义和优缺点？</h2>
+<p>参见：ref="<a href="https://link.zhihu.com/?target=https%3A//z">https://z</a><em>huan</em><a href="http://lan.zhihu.com/p/106644634">http://lan.zhihu.com/p/106644634</a>"&gt; 一文读懂 Transformer 模型的位置编码</p>
+<h2 id="21">21、你还了解哪些关于位置编码的技术，各自的优缺点是什么？</h2>
+<p>参见：<a href="https://link.zhihu.com/?target=https%3A//zhuanlan.zh%253Ci%253Eihu.com/%253C/i%253Ep/121126531">如何优雅地编码文本中的位置信息？三种 positionalencoding 方法简述</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/360144789/h%3Ci%3Ettps://zhuanlan%3C/i%3E.zhihu.com/p/352898810">让研究人员绞尽脑汁的 Transformer 位置编码</a></p>
+<h2 id="22-transformer">22、简单讲一下 Transformer 中的残差结构以及意义。</h2>
+<p>防止梯度消失，帮助深层网络训练</p>
+<h2 id="23-transformer-layernorm-batchnormlayernorm-transformer">23、为什么 transformer 块使用 LayerNorm 而不是 BatchNorm？LayerNorm 在 Transformer 的位置是哪里？</h2>
+<p><em>参见：</em><a href="https://zhuanlan.zhihu.com/p/360144789/https%3C/i%3E://www.zhihu.com/question/395811291/answer/1257223002">transformer 为什么使用 layer normalization，而不是其他的归一化方法？</a></p>
+<h2 id="24-batchnorm">24、简答讲一下 BatchNorm 技术，以及它的优缺点。</h2>
+<p>参见：<a href="https://zhuanlan.zhihu.com/p/153183322">https://zhuanlan.zhihu.com/p/153183322</a><br />
+BN 的理解重点在于它是针对整个 Batch 中的样本在同一维度特征在做处理。<br />
+在 MLP 中，比如我们有 10 行 5 列数据。5 列代表特征，10 行代表 10 个样本。是对第一个特征这一列（对应 10 个样本）做一次处理，第二个特征（同样是一列）做一次处理，依次类推。<br />
+在 CNN 中扩展，我们的数据是 N·C·H·W。其中 N 为样本数量也就是 batch_size，C 为通道数，H 为高，W 为宽，BN 保留 C 通道数，在 N,H,W 上做操作。比如说把第一个样本的第一个通道的数据，第二个样本第一个通道的数据..... 第 N 个样本第一个通道的数据作为原始数据，处理得到相应的均值和方差。<br />
+<strong>BN 有两个优点。</strong><br />
+第一个就是可以解决内部<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8D%8F%E5%8F%98%E9%87%8F&amp;zhida_source=entity">协变量</a>偏移，简单来说训练过程中，各层分布不同，增大了学习难度，BN 缓解了这个问题。当然后来也有论文证明 BN 有作用和这个没关系，而是可以使损失平面更加的平滑，从而加快的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E6%94%B6%E6%95%9B%E9%80%9F%E5%BA%A6&amp;zhida_source=entity">收敛速度</a>。<br />
+第二个优点就是缓解了梯度饱和问题（如果使用 sigmoid <a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0&amp;zhida_source=entity">激活函数</a>的话），加快收敛。<br />
+<strong>BN 的缺点：</strong><br />
+第一个，batch_size 较小的时候，效果差。这一点很容易理解。BN 的过程，使用 整个 batch 中样本的均值和方差来模拟全部数据的均值和方差，在 batch_size 较小的时候，效果肯定不好。<br />
+第二个缺点就是 BN 在 RNN 中效果比较差。这一点和第一点原因很类似，不过我单挑出来说。<br />
+首先我们要意识到一点，就是 RNN 的输入是长度是动态的，就是说每个样本的长度是不一样的。<br />
+举个最简单的例子，比如 batch_size 为 10，也就是我有 10 个样本，其中 9 个样本长度为 5，第 10 个样本长度为 20。<br />
+那么问题来了，前五个单词的均值和方差都可以在这个 batch 中求出来从而模型真实均值和方差。但是第 6 个单词到底 20 个单词怎么办？<br />
+只用这一个样本进行模型的话，不就是回到了第一点，batch 太小，导致效果很差。<br />
+第三个缺点就是在测试阶段的问题，分三部分说。<br />
+首先测试的时候，我们可以在队列里拉一个 batch 进去进行计算，但是也有情况是来一个必须尽快出来一个，也就是 batch 为 1，这个时候均值和方差怎么办？<br />
+这个一般是在训练的时候就把均值和方差保存下来，测试的时候直接用就可以。那么选取效果好的均值和方差就是个问题。<br />
+其次在测试的时候，遇到一个样本长度为 1000 的样本，在训练的时候最大长度为 600，那么后面 400 个单词的均值和方差在训练数据没碰到过，这个时候怎么办？<br />
+这个问题我们一般是在数据处理的时候就会做截断。<br />
+还有一个问题就是就是<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E8%AE%AD%E7%BB%83%E9%9B%86&amp;zhida_source=entity">训练集</a>和测试集的均值和方差相差比较大，那么训练集的均值和方差就不能很好的反应你测试数据特性，效果就回差。这个时候就和你的数据处理有关系了。</p>
+<h2 id="25-transformer">25、简单描述一下 Transformer 中的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&amp;zhida_source=entity">前馈神经网络</a>？使用了什么激活函数？相关优缺点？</h2>
+<p>前馈神经网络采用了两个<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2&amp;zhida_source=entity">线性变换</a>，激活函数为 Relu，公式如下：</p>
+<p>$FFN(x) = max(0, xW_1 + b_1) W_2 + b_2$ FFN(x) = max(0, xW_1 + b_1) W_2 + b_2</p>
+<p>优点：</p>
+<p>SGD 算法的收敛速度比 sigmoid 和 tanh 快；（梯度不会饱和，解决了<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98&amp;zhida_source=entity">梯度消失问题</a>）</p>
+<p>计算复杂度低，不需要进行指数运算；</p>
+<p>适合用于后向传播。</p>
+<p>缺点：</p>
+<p>ReLU 的输出不是 zero-centered；</p>
+<p>ReLU 在训练的时候很” 脆弱”，一不小心有可能导致神经元” 坏死”。举个例子：由于 ReLU 在 x&lt;0 时梯度为 0，这样就导致负的梯度在这个 ReLU 被置零，而且这个神经元有可能再也不会被任何数据激活。如果这个情况发生了，那么这个神经元之后的梯度就永远是 0 了，也就是 ReLU 神经元坏死了，不再对任何数据有所响应。实际操作中，如果你的 learning rate 很大，那么很有可能你网络中的 40% 的神经元都坏死了。 当然，如果你设置了一个合适的较小的 learning rate，这个问题发生的情况其实也不会太频繁。，Dead ReLU Problem（神经元坏死现象）：某些神经元可能永远不会被激活，导致相应参数永远不会被更新（在负数部分，梯度为 0）。产生这种现象的两个原因：参数初始化问题；learning rate 太高导致在训练过程中参数更新太大。 解决方法：采用 Xavier 初始化方法，以及避免将 learning rate 设置太大或使用 adagrad 等自动调节 learning rate 的算法。</p>
+<p>ReLU 不会对数据做幅度压缩，所以数据的幅度会随着模型层数的增加不断扩张。</p>
+<h2 id="26encoder-decoder-seq2seq-attention">26、Encoder 端和 Decoder 端是如何进行交互的？（在这里可以问一下关于 seq2seq 的 attention 知识）</h2>
+<p>参见：<a href="https://zhuanlan.zhihu.com/p/360144789/htt%3C/i%3Eps://zhuanlan.zhihu.com/p/58969651">ransformer 中的细节探讨</a></p>
+<h2 id="27decoder-encoder-decoder-sequence-mask">27、Decoder 阶段的多头自注意力和 encoder 的多头自注意力有什么区别？（为什么需要 decoder 自注意力需要进行 sequence mask)</h2>
+<h2 id="28transformer-decoder">28、Transformer 的<a href="https://zhida.zhihu.com/search?content_id=168161579&amp;content_type=Article&amp;match_order=1&amp;q=%E5%B9%B6%E8%A1%8C%E5%8C%96&amp;zhida_source=entity">并行化</a>提现在哪个地方？Decoder 端可以做并行化吗？</h2>
+<h2 id="29-wordpiece-model-byte-pair-encoding">29、简单描述一下 wordpiece model 和 byte pair encoding，有实际应用过吗？</h2>
+<p>参见：<a href="https://link.zhihu.com/?target=https%3A//zhuan%253Ci%253Elan.zhihu%253C/i%253E.com/p/86965595">深入理解 NLP Subword 算法：BPE、WordPiece、ULM</a></p>
+<h2 id="30transformer-dropout-dropout">30、Transformer 训练的时候学习率是如何设定的？Dropout 是如何设定的，位置在哪里？Dropout 在测试的需要有什么需要注意的吗？</h2>
+<h2 id="31-transformer">31、<a href="https://zhuanlan.zhihu.com/p/360144789/htt%3Ci%3Eps://www.zh%3C/i%3Eihu.com/question/349958732/answer/945349902">有哪些令你印象深刻的魔改 transformer？</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
