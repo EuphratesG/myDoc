@@ -1,0 +1,1784 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../git/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+    
+    
+      
+        <title>algorithm - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d7758b05.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#algorithm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              algorithm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    这是一个欢迎页面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    algorithm
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    algorithm
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      单源最短路径
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单源最短路径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      迪杰斯特拉
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8E%E5%95%A5%E4%B9%9F%E4%B8%8D%E4%BC%9A%E5%88%B0%20GPT-3%20%E5%92%8C%20InstructGPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从啥也不会到 GPT 3 和 InstructGPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法思想
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LLM&dl
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            LLM&dl
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/ReinforcementLearing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    强化学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/ai_agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG 和使用工具在智能体（AI agents）解决大模型幻觉（hallucination）方面的异同
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    transformer相关扣细节
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E4%B8%89%E7%BB%84%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    频率学派和贝叶斯学派、概率模型和非概率模型、生成式模型和判别式模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    人工智能考试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动手学深度学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    损失函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM%26dl/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习考试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    fedGraphRAG mess
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            fedGraphRAG mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fedGraphRAG_mess/FedGraph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FedGraph: Federated Graph Learning With Intelligent Sampling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fedGraphRAG_mess/FederatedScope-GNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FederatedScope-GNN: Towards a Unified, Comprehensive and Efficient Package for Federated Graph Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fedGraphRAG_mess/%E8%81%94%E9%82%A6KGs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联邦KGs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fedGraphRAG_mess/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%81%94%E9%82%A6%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联邦学习和联邦图学习相关
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Infra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infra/6.824/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.824
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infra/CSAPP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSAPP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infra/SICP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SICP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infra/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/javaWeb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java学习路线
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mess
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Mess
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/jinnseikann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iroiro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/maajyann/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    maahyann
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/mess/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mess
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/simpread-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simpread 面向对象和函数式编程的本质区别
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mess/%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    矩阵论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    搜广推
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            搜广推
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8/%E6%90%9C%E5%B9%BF%E6%8E%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    搜广推相关知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      单源最短路径
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单源最短路径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      迪杰斯特拉
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="algorithm">algorithm</h1>
+<h2 id="_1">单源最短路径</h2>
+<h3 id="_2">迪杰斯特拉</h3>
+<ol>
+<li>设置dis数组，dis[i]表示起点start到i的距离。</li>
+<li>从点集V中<strong>弹出一个dis值最小</strong>且<strong>未以该点为起点进行松弛操作的</strong>点。</li>
+<li>从该点松弛与其领接的各个点更新dis数组，返回S2，循环进行。  </li>
+</ol>
+<pre><code class="language-c++">//O((V+E)logV) 若不用优先队列则是O(VE)
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+5;//点的集合范围
+const int maxm=2e5+5;//边的集合范围
+​
+struct edge{
+    int to,cost;
+};
+​
+struct node{ //重载&lt;方便优先队列
+    int num,dis;
+    bool operator &lt; (const node &amp;x)const{//tm必须重载&lt;是因为priority_queue第三个参数是less&lt;T&gt;，相当于重载&lt;
+        return x.dis &lt; dis;
+    }//当比较器返回true时第一个参数在前面第二个参数在后面（队列从队头pop所以这样优先级高的大）
+};
+​
+vector&lt;edge&gt; e[maxm];
+int dis[maxn];
+bool vis[maxn]; // 布尔型vis数组
+int n,m,s,cnt=0;
+priority_queue &lt;node&gt; q;
+​
+void add_edge(int u,int v,int w) // 存边
+{
+    e[u].push_back((edge){v,w}); //匿名类省去起名
+}
+​
+void dijkstra()
+{
+    dis[s]=0;
+    q.push((node){s,0});
+    while (!q.empty())
+    {
+        node tmp=q.top();
+        q.pop();
+        int x=tmp.num;
+        if (vis[x]) continue;
+        vis[x]=1;
+        for (edge k:e[x]) // 遍历边信息，请注意洛谷请选用c++11，否则编译错误
+        {
+            if (dis[x] + k.cost &lt; dis[k.to])
+            {
+                dis[k.to]=dis[x]+k.cost;
+                if (!vis[k.to]) q.push((node){k.to,dis[k.to]});
+            }
+        }
+    }
+}
+​
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    int i;
+    for (i=1;i&lt;=n;i++) dis[i]=0x7fffffff;
+    for (i=0;i&lt;m;i++)
+    {
+        int u,v,w;
+        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;
+        add_edge(u,v,w);
+    }
+    dijkstra();
+    for (i=1;i&lt;=n;i++) cout&lt;&lt;dis[i]&lt;&lt;&quot; &quot;;
+    return 0;
+}
+</code></pre>
+<p>由此引出自定义比较函数（通常用于结构体）的方法：<br />
+1. sort()</p>
+<pre><code class="language-c++">//按照指定的 comp 排序规则，对 [first, last) 区域内的元素进行排序
+void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+//首先我们要写一个bool类型的方法，用来返回参数的比较结果
+//当比较器返回true时，第一个参数放在前面，第二个参数放在后面，即位置不变
+//当比较器返回false时，为两元素交换位置
+//这里要注意对参数相等时的处理,因为可能会在两者相等的时候交换位置，在一些特定的环境下会导致题解出错
+//比较器最好写成static函数
+//比较器的值可以使用引用类型,节省空间开销
+static bool cmp1(int &amp;lhs,int &amp;rhs)//升序
+{
+    return lhs&lt;rhs;
+}
+static bool cmp2(int &amp;lhs,int &amp;rhs)//降序
+{
+    return lhs&gt;rhs;
+}
+
+bool comp1(Test A,Test B){
+     if(A.num==B.num) return A.str&lt;B.str; // 字符串str字典序小的在前
+     return A.num &gt; B.num ;               // 出现次数高的元素在前
+}
+
+sort(arr,arr+10,cmp1);//升序
+sort(arr,arr+10,cmp1);//降序
+</code></pre>
+<ol>
+<li>优先队列</li>
+</ol>
+<pre><code class="language-c++">//优先队列自定义比较器处理方法1，处理方法2是戴上镣铐重载&lt;
+bool cmp(vector&lt;int&gt;&amp;a,vector&lt;int&gt;&amp;b){
+    return a[0]&gt;b[0];
+}
+priority_queue&lt;vector&lt;int&gt;,vector&lt;vector&lt;int&gt;&gt;,decltype(&amp;cmp)&gt; pq(cmp); //注意队列pq还要传入cmp
+</code></pre>
+<h1 id="_3">代码随想录</h1>
+<h2 id="stl">常用stl</h2>
+<ul>
+<li>vector &lt;&gt;string 就是二维数组的使用方法常见于棋盘问题</li>
+<li>常用库函数</li>
+</ul>
+<pre><code class="language-c++">字符串reverse on
+swap o1
+isdigit()
+</code></pre>
+<ul>
+<li>vector、stack、queue（换成push和pop以及front和top，其他完全一致）</li>
+</ul>
+<pre><code class="language-c++">//只列需要记住的点
+std::vector&lt;int&gt; v(10, 5);  // 创建包含10个元素，每个元素的值为5
+v.pop_back();  // 移除最后一个元素
+v.insert(v.begin() + 1, 5);  // 在第二个位置插入元素5
+v.erase(v.begin() + 1);  // 删除第二个元素
+v.erase(v.begin(), v.begin() + 2);  // 删除前两个元素
+std::vector&lt;int&gt; v1 = {1, 2, 3};
+std::vector&lt;int&gt; v2 = {4, 5, 6};
+v1.swap(v2);  // 交换v1和v2的内容
+v.front();
+v.back();
+</code></pre>
+<ul>
+<li>unordered_set&lt;&gt; </li>
+</ul>
+<pre><code class="language-c++">//和数组的区别很明显没法访问下标也不连续，优点是可以无限个元素
+//构造函数跨容器构造，当然还有默认构造和拷贝构造、初始化列表、制定大小构造
+vector&lt;int&gt;&amp; nums1
+unordered_set&lt;int&gt; nums_set(nums1.begin(), nums1.end());
+
+std::unordered_set&lt;int&gt; set = {10, 20, 30};
+std::unordered_set&lt;int&gt; set(10);  // 初始化时有 10 个桶
+
+//插入
+std::unordered_set&lt;int&gt; set;
+set.insert(10);
+set.insert(20);
+//查找
+auto it = set.find(10);
+if (it != set.end()) {
+    std::cout &lt;&lt; &quot;Found: &quot; &lt;&lt; *it &lt;&lt; std::endl;
+}
+//其他
+empty() size() erase()
+
+</code></pre>
+<ul>
+<li>std::unordered_map <int,int> map;</li>
+</ul>
+<pre><code class="language-c++">//和set的操作区别在于：
+//插入
+map.insert({1, 100});
+map.insert(pair&lt;int, int&gt;(nums[i], i));
+//访问
+std::unordered_map&lt;int, int&gt; map = {{1, 100}, {2, 200}, {3, 300}};
+map[1] = 100;  // 插入键1对应的值100
+int value = map[1];  // 获取键1的值
+
+//这也是一种写法，其实直接[]key值访问也行，返回这里返回的是vector
+// 遍历当前元素，并在map中寻找是否有匹配的key
+auto iter = map.find(target - nums[i]); 
+if(iter != map.end()) {
+    return {iter-&gt;second, i};
+}
+</code></pre>
+<h2 id="_4">常用代码模板</h2>
+<p>二叉树前序（递归/迭代）、中序（递归/cur迭代）、后序（递归/前序逆转）、层序遍历（while for）  </p>
+<pre><code class="language-c++">    static bool cmp(const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b) {
+        if (a[0] == b[0]) return a[1] &lt; b[1];
+        return a[0] &gt; b[0];
+    }
+</code></pre>
+<h2 id="_5">细节错误</h2>
+<ul>
+<li>queue只有push没有pushback</li>
+<li>treenode传参的时候如果需要改变root树就加一层指针（例如链表init的时候），只需要遍历就不用</li>
+<li>que.front()在队列为空的时候会有野指针，不要这样用，直接用que.empty()</li>
+<li>递归问题的源数据源千万不要修改，例如排列问题要剪枝而不要修改数据源</li>
+<li>string有+=没有-=，但是有pop_back</li>
+<li>函数要有一个默认的return，return不能全在if语句里</li>
+<li>可以明白vector是可以不初始化的，层序遍历初始化反而不知道怎么初始化</li>
+<li>stack.top()不能直接stack.top()-&gt;val，而是必须cur = stack.top() cur-&gt;val</li>
+</ul>
+<p>//int和node类型啊<br />
+//判断空树空指针啊<br />
+//if(root == nullptr) return result 返回result就是空vec，不能返回nullptr，因为返回值是vec啊<br />
+//api遗忘啊
+//空指针和特殊情况判断！边界条件啊sai<br />
+//动态规划fn是n+1个元素常常  </p>
+<p>普通数组的数组名在大多数上下文中被视为指针，通常无需 &amp;。
+std::vector 是一个对象，nums 表示对象本身，而 &amp;nums 表示对象的地址，必须显式使用 &amp; 来传递指针。  </p>
+<p>初始化方法
+        vector<vector\<int>> dp(n, vector<int>(2, 0));</p>
+<h2 id="_6">双指针 数组、链表、字符串题目</h2>
+<ul>
+<li>lc27 lc151 数组中删除指定数值的元素 慢指针原地构建新数组，快指针遍历。本题的思想还能用来删除一个字符串中的所有空格（后面需要再自己加）  </li>
+<li>lc977对快排的优化 头尾指针都用于遍历。</li>
+<li>双指针法怎么来的呢？首先观察数组性质空间上不能用原数组（因为构建指针不能退格），所以要引入空间复杂度on。再有，构建指针从大还是小从哪开始呢？从小到大显然不行因为平方后小数在原数组的中间，再考虑到原数组平方后是u形，想到前后反向双指针比大小。时间复杂度on</li>
+<li>lc209 滑动窗口优化暴力。要考虑只有一个for那么指针要代表起始位置还是结束位置？另外循环内部该if就if就行，if冗余优化成while条件是后面的事  </li>
+<li>lc19删除链表倒数第n个节点 <strong>二元对立补集思想，本质是双指针的相对距离不变为n</strong></li>
+<li>链表相交 算一个差让两个指针对齐</li>
+<li>lc142环形链表 <strong>双指针找环</strong>快指针走2慢指针走1，如果有环的话慢指针进环的那一刻两指针的相对距离就固定了一定能相遇。ok判断有环之后环入口怎么找？通过数学推导</li>
+<li>lc1两数之和 lc15三数之和 lc18四数之和 补集思想的哈希能解决这种在集合中存不存在的问题。 <strong>双指针也能解决，先定一个值然后剩下两个指针分别处理大了小了。但是问题是一定要排序天然有快排的时间复杂度，而且排序后下标也乱了。</strong></li>
+<li>字符串替换数字为number 使用空间复杂度很简单，但<strong>原地构建的话要先申请足够的长度然后双指针同时从后向前遍历</strong></li>
+</ul>
+<h2 id="_7">数组、字符串</h2>
+<h3 id="stringreversenswap1kmp">字符串就是字符数组，使用string的reverse（n）、swap（1）等，还有右旋字符串这种题，还有kmp</h3>
+<ul>
+<li>kmp主要分为构建next数组（前缀表，三种实现形式）和实际匹配。匹配不上时看next数组前一个值，原串的后缀等于模式串的前缀，因此可以跳过这个重叠部分。另外实现中注意while(j &gt;= 0 &amp;&amp; s[i] != t[j + 1])代表不匹配，因为退回去的时候j还是代表后缀末尾的后一个元素，i代表前缀末尾的后一个元素，还是可能不匹配的。</li>
+</ul>
+<h3 id="_8">主要是三要素、双指针、模拟 数组是可以排序的！</h3>
+<ul>
+<li>区间定义（循环不变量）决定了left、right取不取等号（left==right的时候有没有意义）、middle-1（下轮循环不要包含本轮循环的点）等  </li>
+<li>
+<p><strong>三要素：数据结构建模（数组和链表）和边界判断/终止条件（怎么想？就想极端情况，还有特殊元素奇偶数等的处理）、实际逻辑（每个循环的清晰逻辑）、参数设置/初始化</strong></p>
+</li>
+<li>
+<p>27题删除指定值的所有元素，<strong>vector.erase实际上是O（n）的复杂度</strong>，因为有前移操作，因此暴力是n2的复杂度。双指针法快指针先走赋值给慢指针，把原数组覆盖不引入空间复杂度。太不熟了！同向逆向双指针都可以考虑，<strong>而且不用真的定义指针，反而真定义指针才是错了，因为vector只能用头部指针操作，数组的指针直接用int下标表示就行</strong>。  </p>
+</li>
+<li>
+<p>58题<strong>区间和，空间换时间，先计算好再查表，n*m优化到n+m</strong></p>
+</li>
+<li>44题开发商购买土地，二维前缀和，当然也可以对暴力进行优化。这里的建模方法连暴力都没想起来，要重视一下。 vector<vector\<int>> vec(n, vector<int>(m, 0)) ;</li>
+<li>59题螺旋矩阵 很好的大模拟，要么代码随想录的以圈为边界，要么就以达到最大数为边界手动操作缩圈</li>
+</ul>
+<p>指针分配内存，有地址（编译器和程序员看来），属于一个类型变量，支持取地址与解引用操作。
+引用分配内存，有地址（编译器看来），相当于一个变量别名，不支持取地址与解引用操作（即不可获取其本身地址），声明即必须初始化，不可变更引用对象，本质上是“pointer const”，和指针的本质一样，相当于省略了指针*a取值的过程。  </p>
+<h2 id="_9">链表</h2>
+<h3 id="_10">主要是链表操作、双指针、数学思想</h3>
+<p>链表删除节点的时候，要找前一个节点来修改指针域去跳过待删除节点，如果没有头结点的版本要删除第一个节点还要不同的操作（把第二个节点赋给head）。因此引入头结点来对头部的操作统一。<br />
+<strong>一般是用指针来操作链表</strong>，虽然有些时候节点操作也行但不好归类。    </p>
+<pre><code class="language-c++">ListNode* dummyhead= new ListNode(0,head);
+ListNode * cur = dummyhead;
+</code></pre>
+<p>链表的一些基本操作：获取第n个节点的数值、头插尾插、删除第n个节点、在第n个节点前面插入<br />
+链表翻转，双指针+临时指针比较易得的思路。（另外这题也可以用递归来写，不过实际上和循环本质完全一样而且晦涩难懂，没有体现递归分治的特点）<br />
+lc19删除链表倒数第n个节点，这里涉及双指针的二元对立补集思想。<a href="../%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/">算法思想</a></p>
+<p>最基本的链表节点定义：  </p>
+<pre><code class="language-c++">// 单链表
+struct ListNode {
+    int val;  // 节点上存储的元素
+    ListNode *next;  // 指向下一个节点的指针
+    ListNode(int x) : val(x), next(NULL) {}  // 节点的构造函数
+};
+</code></pre>
+<p>力扣默认链表节点是上面的定义，虚拟头结点要自己设置，最后再把虚拟头结点赋给题目给的原头结点即可</p>
+<pre><code class="language-c++">class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* dummyHead = new ListNode(0); // 设置一个虚拟头结点
+        dummyHead-&gt;next = head; // 将虚拟头结点指向head，这样方便后面做删除操作
+        ListNode* cur = dummyHead;
+        while (cur-&gt;next != NULL) {
+            if(cur-&gt;next-&gt;val == val) {
+                ListNode* tmp = cur-&gt;next;
+                cur-&gt;next = cur-&gt;next-&gt;next;
+                delete tmp;
+            } else {
+                cur = cur-&gt;next;
+            }
+        }
+        head = dummyHead-&gt;next;
+        delete dummyHead;
+        return head;
+    }
+};
+</code></pre>
+<h2 id="_11">栈和队列</h2>
+<p>本质上是容器适配器（vector、deque双向队列、list才是容器）这些容器又包装了最底层的array数组，有函数、无上限、自动回收  <br />
+stack和queue的底层容器都是deque，deque
+std::deque使用了一种分段存储（chunked storage）结构。数据被分成多个固定大小的块（block），这些块的指针存储在一个中央数组中</p>
+<h2 id="_12">哈希表</h2>
+<h3 id="setmap">数组哈希（元素有限个数）、set、map</h3>
+<p>快慢指针可以用来确定是否成环的数学证明：假设链表长度为L，环的长度为C。当快指针和慢指针第一次相遇时，快指针走过的距离是L+nC（其中n是快指针走过环的圈数），慢指针走过的距离是L。由于快指针的速度是慢指针的两倍，所以有2L=L+nC，即L=nC。这意味着链表的长度是环长度的整数倍。<br />
+哈希表的本质就是一个数组，快速判断一个元素是否在集合里，一个元素是否出现过，是否重复出现。
+本质就是flag数组同时带有计数作用<br />
+例如查找一个学生名字是否在学校里，暴力O(n)，哈希O(1)<br />
+常见的三种哈希结构<br />
+* 数组 有限
+* map 无限而且需要其他信息
+* set 无限</p>
+<p>lc1002 读题暴力是四次方复杂度，想到用哈希。要找多个哈希表的共性，想到最大最小值。  </p>
+<h2 id="_13">二叉树</h2>
+<pre><code class="language-c++">// 二叉树
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+</code></pre>
+<h3 id="_14"><strong>二叉树的遍历方式</strong></h3>
+<ul>
+<li>
+<p>二叉树问题其实算是某种弱化版的回溯。<strong>核心其实还是在于单层递归的逻辑，边界条件是单层递归非正常情况的处理（一般用于排除边界或汇总结果），函数内逻辑则是正常情况的处理</strong>。关于递归参数使用<strong>①全局变量还是传参的问题（传参②值传递还是③引用传递）</strong>，值传递会产生额外的copy开销，但可以在不影响本层的情况下不手动回溯/直接使用临时参数（ dfs(root.left, path + root.val + "-&gt;", res);）。引用传递和使用全局变量每次手动操作都要手动回溯撤销。</p>
+</li>
+<li>
+<p>二叉树非递归（迭代遍历） 为什么能非递归遍历，其实就是用栈模拟递归的过程。这里还涉及访问顺序和处理操作顺序不一致的问题（先序是中左右入栈，但中序是左中右，而处理顺序一定是中优先，固不一致）<strong>本质是只有根节点具有访问到子节点的能力/指针，才能像先序那样访问顺序和处理顺序一致</strong>。所以中序的话就要靠指针去刻意指路再靠栈去访问,<strong>根据指针去压栈到达边界后pop处理</strong>。代码确实比较难记，while循环单层逻辑也是分cur是不是空，要到叶子节点才开始遍历。</p>
+</li>
+<li>我们就会递归遍历和非递归遍历足矣，统一遍历方法了解即可。  </li>
+<li>层序遍历就一句话，无边界while里套有边界for，每次遍历一层</li>
+</ul>
+<p>涉及到二叉树的构造，无论普通二叉树还是二叉搜索树一定前序，都是先构造中节点。</p>
+<p>求普通二叉树的属性，一般是后序，一般要通过递归函数的返回值做计算。</p>
+<p>求二叉搜索树的属性，一定是中序了，要不白瞎了有序性了。</p>
+<p><strong>前中后序遍历虽然都是dfs，但是存在遍历顺序的问题，例如找从根到叶子的所有路径就必须使用前序遍历。</strong></p>
+<p>求树的高度用后序遍历，求树的深度用前序遍历，数值如果一样无所谓（例如求最大高度深度的时候）但像判断是否是平衡二叉树的时候就必须用后序遍历来一层层判断。  </p>
+<p>lc222的优化思路，O(logn*logn)比O(n)更优，怎么比较的？直接做比值求极限。左右两侧深度不同，且通过递归总能找到完全二叉树。  <br />
+lc110平衡二叉树，原函数返回值为bool，但还需要int树高的返回值来计算是否平衡，因此一定要分函数，且-1的设计很有用<br />
+lc105对称二叉树，递归也可以两个节点作为参数啊，因为根一定是轴对称的</p>
+<hr />
+<h3 id="1">1.<strong>二叉树相关性质</strong></h3>
+<ul>
+<li><strong>节点与层次关系</strong></li>
+<li><strong>层次</strong>：根节点为第 1 层，其子节点为第 2 层，依次类推。</li>
+<li><strong>第 ( k ) 层的最大节点数</strong>：<br />
+    [
+    2^{k-1}
+    ]</li>
+<li>
+<p><strong>深度为 ( h ) 的二叉树的最大节点数</strong>：<br />
+    [
+    2^h - 1
+    ]</p>
+</li>
+<li>
+<p><strong>完全二叉树的性质</strong></p>
+</li>
+<li><strong>节点编号</strong>：对于完全二叉树中的节点（从 1 开始编号）：<ul>
+<li>父节点编号为 ( i )，则其左子节点编号为 ( 2i )，右子节点编号为 ( 2i + 1 )。</li>
+<li>子节点编号为 ( i )，其父节点编号为 ( \lfloor i/2 \rfloor )。</li>
+</ul>
+</li>
+<li>
+<p><strong>高度 ( h ) 与节点数 ( n ) 的关系</strong>：
+    [
+    h = \lceil \log_2(n+1) \rceil
+    ]</p>
+</li>
+<li>
+<p><strong>满二叉树的性质</strong></p>
+</li>
+<li><strong>节点总数</strong>：若深度为 ( h )，节点总数为：
+    [
+    2^h - 1
+    ]</li>
+<li>
+<p><strong>叶子节点数</strong>：叶子节点数等于非叶子节点数加 1。</p>
+</li>
+<li>
+<p><strong>一般二叉树的性质</strong></p>
+</li>
+<li><strong>节点关系</strong>：<ul>
+<li>( n_0 ): 叶子节点数</li>
+<li>( n_2 ): 度为 2 的节点数<br />
+则有：
+[
+n_0 = n_2 + 1
+]</li>
+</ul>
+</li>
+<li><strong>总节点数 ( n )</strong>：
+    [
+    n = n_0 + n_1 + n_2
+    ]<ul>
+<li>( n_0 ): 度为 0 的节点（叶子节点）</li>
+<li>( n_1 ): 度为 1 的节点</li>
+<li>( n_2 ): 度为 2 的节点</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="4">4. <strong>应用中的二叉树</strong></h3>
+<ul>
+<li><strong>堆</strong>：满足堆性质的完全二叉树（如最大堆和最小堆）。</li>
+<li><strong>哈夫曼树</strong>：一种带权路径长度最短的二叉树。</li>
+<li><strong>AVL 树</strong>：一种高度平衡的二叉搜索树。它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</li>
+</ul>
+<hr />
+<h2 id="_15">回溯</h2>
+<p><strong>回溯模板，一个for处理同层，递归解决深度，终止条件收集ans，一般还要传for循环的startindex用来剪枝和确定深度层数</strong><br />
+<strong>其实就是迭代（或者多个if）+递归，深入版的遍历。</strong>  </p>
+<p>为什么暴力搜索要用回溯不直接for循环？因为比如组合数例子，如果三个位置就要用三层for循环，m层连代码都写不出来<br />
+<strong>如果解决一个问题有多个步骤，每一个步骤有多种方法，题目又要我们找出所有的方法（或者在所有方法里做优化），可以使用回溯算法；</strong></p>
+<p>代码随想录的图适合分析逻辑不适合分析时间复杂度</p>
+<p>其实回溯的一大考察点是剪枝，因为时间复杂度都一样sai。<br />
+* for循环的范围，可以列个不等式
+* 权的大小是否已经满足条件，根据题目而定</p>
+<h2 id="dpdfs">分治、dp、贪心、回溯、dfs、树的遍历比较</h2>
+<p>注意递归一定能写成迭代，递归不是手段，只是有时候契合算法思想。  </p>
+<h3 id="_16"><strong>总结</strong>：</h3>
+<ul>
+<li>分治就是<strong>后序遍历</strong>的思想，可以通过<strong>动态规划</strong>优化。</li>
+<li><strong>动态规划</strong>通过记录子问题的解来优化分治法，并且<strong>贪心</strong>是动态规划的特例。</li>
+<li>解决最优化问题往往要遍历解空间。<strong>回溯法就是带剪枝的dfs</strong>遍历解空间，可以视为等同。树的遍历有点区别因为节点带值而且并非多叉，<strong>相对独立</strong>一点吧，但树的前中后遍历其实都是dfs，层序遍历是bfs，这里理解下</li>
+<li>动态规划其实就是从最优子问题出发，我当前状态要达到最优肯定是从<strong>之前一定最优的最优状态</strong>经过<strong>操作</strong>到达的当前状态。状态可以单加一维dp数组表示也可以用if、max、min表示，仅达到当前某单一状态需要前序多个状态作为来源的时候考虑加维度，或者需要只访问前一个状态的时候也可以加维度（打家劫舍）。<strong>能做的操作有时候也会被前序状态限制（冷冻期），这句话用一系列股票问题好好体会</strong></li>
+</ul>
+<p><strong>分治（后序思想）</strong> 分治思想（分，计算，合并）的思想十分契合递归，而回溯、dp、贪心其实都是递归思想（dp的写法可以用迭代写，但思想还是递归）因此分治不是一个单独的题的类型。归并排序是最优子结构，组合数不是     <br />
+<strong>dp</strong>是特殊的分治带最优子结构（和重叠子问题）的分治 也是先分 再自底向上计算合并 相当于把重叠的存起来。下一步最优解一定和前一步有关系。动态规划两层for或者递归实现，完美形式是 带备忘的递归改写的嵌套循环。<br />
+<strong>贪心</strong>是只走一条路走完就是最优解（得到证明的前提下）局部最优解就是全局最优解的dp优化。下一步最优解不一定和之前有关系（可以有关系，像哈夫曼就和前面有关系，安排活动就和之前状态没关系（可选择子集仍然是那些活动没有新活动））。实际上也可以看成自底向上哈。（也有说法说贪心算法通常都是这种自顶向下的设计：作出一个选择，然后求解剩下的那个子问题，这样其实也是自底向上只不过是先解决一部分。见仁见智）<strong>在决策树层面贪心和回溯是自顶向下做选择，但由小问题最终构成大问题层面都是自底向上！</strong>   <br />
+<strong>回溯</strong> 一开始就自底向上做选择直到达到边界 是暴力搜复杂度是指数级起步（跟树的节点数有关）可以处理子问题对前面的结果有依赖的问题（组合问题，这里的子问题是做出不同选择产生的新子问题，不满足dp），也基本可以处理所有dp问题（例如斐波那契，没得选择但也可以叫回溯）但是时间会爆炸不能用，要用dp优化。  </p>
+<p>回溯法的时间复杂度分析，以组合问题为例。<br />
+这里实际上是天然剪枝过的图，不然取2之后还要在134里取，只不过忽略掉了。考虑时间复杂度时原本是做2^n次选择（也可以用取或不取一个数来理解最后结果集都一样），再加上每个选择要push_back一下是on（组合不是，子集问题是，组合问题就先这样写了最高也不会超过子集问题，因为组合就是子集问题的一种），所以才有最后的时间复杂度。<br />
+<img alt="" src="https://cdn.jsdelivr.net/gh/EuphratesG/myPic@main/202411271528938.png" /></p>
+<pre><code class="language-c++">class Solution {
+private:
+    vector&lt;vector&lt;int&gt;&gt; result; // 存放符合条件结果的集合
+    vector&lt;int&gt; path; // 用来存放符合条件结果
+    void backtracking(int n, int k, int startIndex) {
+        if (path.size() == k) {
+            result.push_back(path);
+            return;
+        }
+        for (int i = startIndex; i &lt;= n; i++) {
+            path.push_back(i); // 处理节点
+            backtracking(n, k, i + 1); // 递归
+            path.pop_back(); // 回溯，撤销处理的节点
+        }
+    }
+public:
+    vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) {
+        result.clear(); // 可以不写
+        path.clear();   // 可以不写
+        backtracking(n, k, 1);
+        return result;
+    }
+};
+</code></pre>
+<p>跳楼梯问题的回溯解法，会超时，所以用dp</p>
+<pre><code class="language-c++">class Solution {
+public:
+    int climbStairs(int n) {
+        int result = 0;
+        backtracking(0, n, result);
+        return result;
+    }
+
+    // backtracking 函数：递归地探索所有可能的跳法
+    void backtracking(int current, int n, int&amp; result) {
+        // 终止条件：如果当前已经到达楼顶，增加一种有效的路径
+        if (current == n) {
+            result++; // 记录到达楼顶的一个方案
+            return;
+        }
+
+        // 递归选择：可以选择爬1个台阶或爬2个台阶，这里选择前后没有依赖就不用for循环和手动回溯了
+        if (current + 1 &lt;= n) {
+            backtracking(current + 1, n, result);  // 爬1个台阶
+        }
+        if (current + 2 &lt;= n) {
+            backtracking(current + 2, n, result);  // 爬2个台阶
+        }
+    }
+};
+</code></pre>
+<h2 id="dpii">动态规划 dp方程考虑的是平凡i而不是最后的i</h2>
+<p>dp数组下标及含义、递推公式、数组初始化、遍历顺序/方向、打印dp数组<br />
+01背包和爬楼梯的区别在于加了背包容量的限制，这样就有两个维度要选择/遍历：物品、背包容量，爬楼梯只有一个维度：当前爬的阶数。当然01背包还可以不单独加一个dp数组维度，而是用dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);表示<br />
+滚动数组相当于还是两个for反复更新外层循环次dp数组，一开始全初始化为0，因此背包顺序必须倒序（原因简而言之就是当前物品遍历需要用到上一次物品遍历的结果，如果背包顺序遍历的话就会用到这一次物品遍历的结果，产生错误的累计（j - weight[i]的原因）），且遍历顺序必须是先物品后背包。<strong>把物品一个个往不同大小的背包里放，外层for的每个循环都是一个物品</strong>，<strong>01背包从后往前遍历，完全背包从前往后，而且物品重量超过背包容量的要予以跳过</strong>。    </p>
+<h3 id="_17">基础问题（含打家劫舍）</h3>
+<p>lc213 成环的打家劫舍，分类讨论的思想不错  </p>
+<h3 id="_18">背包问题</h3>
+<p>排列组合数问题，就用dp[3]来分析<br />
+lc96 找子状态一个个抽，体现动态规划是对暴力回溯的优化，这个找来源的思想还不错，体现和回溯的关系  </p>
+<h4 id="_19">本质分类</h4>
+<ul>
+<li>能否装满背包？/装不满最多装多少、装满背包最大价值、装满背包最小物品数 dp[j] = max(dp[j], dp[j - nums[i]] + nums[i])</li>
+<li>装满背包几种方法 494 518 377 70  dp[j] += dp[j - nums[i]]</li>
+</ul>
+<h4 id="dp">遍历顺序 我们先全用一维dp数组</h4>
+<p>一维dp数组01背包只能先遍历物品再遍历背包容量，且第二层for循环是从大到小遍历</p>
+<pre><code class="language-c++">
+        // 开始 01背包
+        for(int i = 0; i &lt; nums.size(); i++) {
+            for(int j = target; j &gt;= nums[i]; j--) { 
+// 每一个元素一定是不可重复放入，所以从大到小遍历。
+//注意j &gt;= nums[i]意思是对对于比当前遍历的物品的重量还小的背包容量肯定放不下
+//也就不需要更新dp数组了
+                dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+            }
+        }
+</code></pre>
+<p>说完01背包，再看看完全背包。</p>
+<p>先遍历物品还是先遍历背包都是可以的，且第二层for循环是从小到大遍历。</p>
+<p>但是仅仅是纯完全背包的遍历顺序是这样的，题目稍有变化，两个for循环的先后顺序就不一样了。</p>
+<p>如果求组合数就是外层for循环遍历物品，内层for遍历背包。</p>
+<p>如果求排列数就是外层for遍历背包，内层for循环遍历物品。</p>
+<pre><code class="language-c++">//先物品是组合数
+for (int i = 0; i &lt; coins.size(); i++) { // 遍历物品
+    for (int j = coins[i]; j &lt;= amount; j++) { // 遍历背包容量
+        dp[j] += dp[j - coins[i]];
+    }
+}
+//1和2分别打头是两种不同的，因此先背包是排列数
+for (int j = 0; j &lt;= amount; j++) { // 遍历背包容量
+    for (int i = 0; i &lt; coins.size(); i++) { // 遍历物品
+        if (j - coins[i] &gt;= 0) dp[j] += dp[j - coins[i]];
+    }
+}
+</code></pre>
+<h3 id="_20">股票问题</h3>
+<p>初始化时必须要编个理由能说的过去，就像限制买两次的股票问题。其实就是为了让状态转移能进行下去，给不合理的初始化找个合理的名头。这里的名头是dp[1][3]要比price[0]和price[1]，因此要找最大值。  </p>
+<h3 id="_21">序列问题</h3>
+<ul>
+<li>单个数组上的问题</li>
+<li>两个数组上的问题ij</li>
+<li>单个数组回文-&gt; &lt;-向里缩</li>
+</ul>
+<p>kmp ababaa  b和a比较不等，那么回到b和a比较，你看是不是还是相同前缀的下一个字母，所以要回退 就想成很巧妙的只差了一个i的取值好了01</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f13b1293.min.js"></script>
+      
+    
+  </body>
+</html>
